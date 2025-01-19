@@ -88,6 +88,13 @@ public class TextManagerScript : MonoBehaviour
         textArray[index].scale = newScale;
     }
 
+    public void ChangeText(int index, string newText)
+    {
+        textArray[index].text = newText;
+        textArray[index].glyphs = (newText.ToUpper()).ToIntArray();
+        textArray[index].currentGlyph = textArray[index].glyphs.Length;
+    }
+
     public void ClearText(int index)
     {
         RemoveFromTextArray(index);
