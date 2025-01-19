@@ -250,7 +250,6 @@ GameObject:
   m_Component:
   - component: {fileID: 652165394}
   - component: {fileID: 652165393}
-  - component: {fileID: 652165396}
   m_Layer: 0
   m_Name: TextManagerObj
   m_TagString: Untagged
@@ -270,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e03ee343dea7fa48a49a5fbe2aebdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 674247366}
   letters:
   - {fileID: 2800000, guid: 5cd8bdf4242be7f45ae0f41f23fded15, type: 3}
   - {fileID: 2800000, guid: 9a83826bab25f254090fa7d5734619dc, type: 3}
@@ -309,35 +307,22 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 1d3042d242ab2d04bb9f0b282b43fcfb, type: 3}
   - {fileID: 2800000, guid: bdb1a51c03e3dd34b91c8e859f6a7804, type: 3}
   - {fileID: 2800000, guid: 887d5045e1e1ec244bbffef00a6809c2, type: 3}
-  glyphsprites: []
-  textPanel: {fileID: 1728639367}
---- !u!224 &652165394
-RectTransform:
+  textSpeed: 0.1
+--- !u!4 &652165394
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652165391}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 734.3333, y: 361.83334, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 734.3333, y: 361.83334}
-  m_SizeDelta: {x: 1468.6666, y: 723.6667}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &652165396
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652165391}
-  m_CullTransparentMesh: 1
 --- !u!1 &674247363
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +677,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1159411216}
   - {fileID: 126047324}
-  - {fileID: 652165394}
   - {fileID: 674247367}
   - {fileID: 1792273241}
+  - {fileID: 652165394}

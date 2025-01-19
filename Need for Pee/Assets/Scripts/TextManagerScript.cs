@@ -11,10 +11,8 @@ using System;
 
 public class TextManagerScript : MonoBehaviour
 {
-    public Canvas canvas;
     public Texture2D[] letters;
     public Texture2D[] numbers;
-    public GameObject textPanel;
     public float textSpeed = 0.1f;//time between next glyph appearing
     Dictionary<int,float> vnTimers = new Dictionary<int, float>();
     Dictionary<int,int> currentGlyphTracker = new Dictionary<int, int>();
@@ -30,8 +28,7 @@ public class TextManagerScript : MonoBehaviour
         {
             textArray[i].active = false;
         }
-        canvas = gameObject.GetComponent<Canvas>();
-        PissTextGeneration("test 123", new Vector2(10,10),0.25f,true);
+        PissTextGeneration("Press P to interact", new Vector2(10,10),0.25f,true);
     }
 
     // Update is called once per frame
