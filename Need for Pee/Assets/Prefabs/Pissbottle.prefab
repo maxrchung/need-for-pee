@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1c2c13828af5caba0045a195ee22bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EmptyBottleMesh: {fileID: 5968069871967948946}
+  FullBottleMesh: {fileID: 7742454297527900414}
 --- !u!1 &8556859793562262951
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +163,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 61c7582e0433a0b46a120066dff95dc5, type: 3}
+--- !u!23 &7742454297527900414 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7135666843996555947, guid: 61c7582e0433a0b46a120066dff95dc5, type: 3}
+  m_PrefabInstance: {fileID: 609184527464157781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8222874737000481983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8820800251366004458, guid: 61c7582e0433a0b46a120066dff95dc5, type: 3}
@@ -223,6 +230,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 090cfc89f7c6f2f41b8f333b95efbab0, type: 3}
+--- !u!23 &5968069871967948946 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6777218999706031535, guid: 090cfc89f7c6f2f41b8f333b95efbab0, type: 3}
+  m_PrefabInstance: {fileID: 927551480798233917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6944123771556118921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7818575435527029940, guid: 090cfc89f7c6f2f41b8f333b95efbab0, type: 3}
