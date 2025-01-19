@@ -18,6 +18,7 @@ namespace KinematicCharacterController.Examples
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
         private int _textArrayIndex = -1;
+        private IInteractable _interactable = null;
 
         private void Start()
         {
@@ -40,9 +41,12 @@ namespace KinematicCharacterController.Examples
 
             var hasHit = false;
             if (Physics.Raycast(CharacterCamera.Transform.position, CharacterCamera.Transform.forward,
-                    out RaycastHit hit, 100f))
+                    out RaycastHit hit, 4f))
             {
-                if (hit.collider.isTrigger)
+                _interactable = hit.collider.isTrigger
+                    ? hit.collider.gameObject.GetComponent<IInteractable>()
+                    : null;
+                if (_interactable != null)
                 {
                     if (_textArrayIndex == -1)
                     {
@@ -58,6 +62,7 @@ namespace KinematicCharacterController.Examples
             {
                 TextManager.ClearText(_textArrayIndex);
                 _textArrayIndex = -1;
+                _interactable = null;
             }
 
             HandleCharacterInput();
@@ -122,6 +127,11 @@ namespace KinematicCharacterController.Examples
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
+
+            if (_interactable != null && Input.GetKeyDown(KeyCode.P))
+            {
+                _interactable.Interact();
+            }
         }
     }
 }
