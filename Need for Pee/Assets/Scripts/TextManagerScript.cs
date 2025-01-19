@@ -28,16 +28,12 @@ public class TextManagerScript : MonoBehaviour
         {
             textArray[i].active = false;
         }
-        PissTextGeneration("Press P to interact", new Vector2(10,10),0.25f,true);
+        //PissTextGeneration("Press P to interact", new Vector2(10,10),0.25f,true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            ClearText(0);
-        }
         for(int i = 0; i < textArray.Length; i++)
         {
             if(textArray[i].active)
@@ -132,14 +128,14 @@ public class TextManagerScript : MonoBehaviour
                     if(currentGlyph >= 48 && currentGlyph <= 57)
                     {
                         //numbers
-                        Graphics.DrawTexture(new Rect(textArray[texts].position.x + textPosition,textArray[texts].position.y,
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition,textArray[texts].position.y,
                         numbers[currentGlyph-48].width * textArray[texts].scale,numbers[currentGlyph-48].height * textArray[texts].scale),numbers[currentGlyph-48]);
                         textPosition += (int)(numbers[currentGlyph-48].width * textArray[texts].scale);
                     }
                     else if(currentGlyph >= 65 && currentGlyph <= 90)
                     {
                         //letters
-                        Graphics.DrawTexture(new Rect(textArray[texts].position.x + textPosition,textArray[texts].position.y,
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition,textArray[texts].position.y,
                         letters[currentGlyph-65].width * textArray[texts].scale,letters[currentGlyph-65].height * textArray[texts].scale),letters[currentGlyph-65]);
                         textPosition += (int)(letters[currentGlyph-65].width * textArray[texts].scale);
                     }
