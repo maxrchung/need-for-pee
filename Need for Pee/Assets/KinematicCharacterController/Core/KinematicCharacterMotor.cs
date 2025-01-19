@@ -577,10 +577,6 @@ namespace KinematicCharacterController
 
 #if UNITY_EDITOR
             Capsule.hideFlags = HideFlags.NotEditable;
-            if (!Mathf.Approximately(transform.lossyScale.x, 1f) || !Mathf.Approximately(transform.lossyScale.y, 1f) || !Mathf.Approximately(transform.lossyScale.z, 1f))
-            {
-                Debug.LogError("Character's lossy scale is not (1,1,1). This is not allowed. Make sure the character's transform and all of its parents have a (1,1,1) scale.", this.gameObject);
-            }
 #endif
         }
 
@@ -724,10 +720,6 @@ namespace KinematicCharacterController
             CapsuleHeight = height;
             CapsuleYOffset = yOffset;
 
-            Capsule.radius = CapsuleRadius;
-            Capsule.height = Mathf.Clamp(CapsuleHeight, CapsuleRadius * 2f, CapsuleHeight);
-            Capsule.center = new Vector3(0f, CapsuleYOffset, 0f);
-
             _characterTransformToCapsuleCenter = Capsule.center;
             _characterTransformToCapsuleBottom = Capsule.center + (-_cachedWorldUp * (Capsule.height * 0.5f));
             _characterTransformToCapsuleTop = Capsule.center + (_cachedWorldUp * (Capsule.height * 0.5f));
@@ -778,10 +770,6 @@ namespace KinematicCharacterController
             }
 
 #if UNITY_EDITOR
-            if (!Mathf.Approximately(_transform.lossyScale.x, 1f) || !Mathf.Approximately(_transform.lossyScale.y, 1f) || !Mathf.Approximately(_transform.lossyScale.z, 1f))
-            {
-                Debug.LogError("Character's lossy scale is not (1,1,1). This is not allowed. Make sure the character's transform and all of its parents have a (1,1,1) scale.", this.gameObject);
-            }
 #endif
 
             _rigidbodiesPushedThisMove.Clear();
