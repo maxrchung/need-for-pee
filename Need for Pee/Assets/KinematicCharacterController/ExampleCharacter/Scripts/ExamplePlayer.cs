@@ -46,7 +46,7 @@ namespace KinematicCharacterController.Examples
                 _interactable = hit.collider.isTrigger
                     ? hit.collider.gameObject.GetComponent<IInteractable>()
                     : null;
-                if (_interactable != null)
+                if (_interactable != null && _interactable.CanInteract())
                 {
                     if (_textArrayIndex == -1)
                     {
