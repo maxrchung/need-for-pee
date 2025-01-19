@@ -10,12 +10,14 @@ namespace KinematicCharacterController.Examples
     {
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
+        public TextManagerScript TextManager;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
         private const string MouseScrollInput = "Mouse ScrollWheel";
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
+        private int _textArrayIndex = -1;
 
         private void Start()
         {
@@ -36,6 +38,28 @@ namespace KinematicCharacterController.Examples
                 Cursor.lockState = CursorLockMode.Locked;
             }
 
+            var hasHit = false;
+            if (Physics.Raycast(CharacterCamera.Transform.position, CharacterCamera.Transform.forward,
+                    out RaycastHit hit, 100f))
+            {
+                if (hit.collider.isTrigger)
+                {
+                    if (_textArrayIndex == -1)
+                    {
+                        _textArrayIndex =
+                            TextManager.PissTextGeneration("Press P to interact", new Vector2(10, 10), 0.69f, false);
+                    }
+
+                    hasHit = true;
+                }
+            }
+
+            if (!hasHit && _textArrayIndex != -1)
+            {
+                TextManager.ClearText(_textArrayIndex);
+                _textArrayIndex = -1;
+            }
+
             HandleCharacterInput();
         }
 
@@ -44,8 +68,11 @@ namespace KinematicCharacterController.Examples
             // Handle rotating the camera along with physics movers
             if (CharacterCamera.RotateWithPhysicsMover && Character.Motor.AttachedRigidbody != null)
             {
-                CharacterCamera.PlanarDirection = Character.Motor.AttachedRigidbody.GetComponent<PhysicsMover>().RotationDeltaFromInterpolation * CharacterCamera.PlanarDirection;
-                CharacterCamera.PlanarDirection = Vector3.ProjectOnPlane(CharacterCamera.PlanarDirection, Character.Motor.CharacterUp).normalized;
+                CharacterCamera.PlanarDirection =
+                    Character.Motor.AttachedRigidbody.GetComponent<PhysicsMover>().RotationDeltaFromInterpolation *
+                    CharacterCamera.PlanarDirection;
+                CharacterCamera.PlanarDirection = Vector3
+                    .ProjectOnPlane(CharacterCamera.PlanarDirection, Character.Motor.CharacterUp).normalized;
             }
 
             HandleCameraInput();
@@ -76,7 +103,8 @@ namespace KinematicCharacterController.Examples
             // Handle toggling zoom level
             if (Input.GetMouseButtonDown(1))
             {
-                CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 0f) ? CharacterCamera.DefaultDistance : 0f;
+                CharacterCamera.TargetDistance =
+                    (CharacterCamera.TargetDistance == 0f) ? CharacterCamera.DefaultDistance : 0f;
             }
         }
 
