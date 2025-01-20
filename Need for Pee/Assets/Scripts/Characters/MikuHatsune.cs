@@ -21,6 +21,7 @@ namespace Characters
                     await Manager.DisplayText("wow frick you dude");
                     await Manager.DisplayText("im gonna flip");
                     gameObject.transform.Rotate(0, 180, 0);
+                    SoundManager.PlaySound(SoundType.HATSUNE_MIKU);
                     await Manager.DisplayText("seeeeeekaaaaaaaaaai de");
                     break;
                 case 0:
