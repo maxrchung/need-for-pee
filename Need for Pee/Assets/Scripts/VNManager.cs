@@ -178,6 +178,8 @@ public class VNManager : MonoBehaviour
     VNTreeNode[] TestCreate()
     {
         //example of what a dialogue tree looks like
+        //VNTreeNode("text you want here", true = terminates dialogue after this line/false = go to next immediate node
+        //after this line/Dictionary = this is a choice dialogue)
         VNTreeNode[] testTree = new VNTreeNode[7];
         testTree[0] = new VNTreeNode("test0",false);
         Dictionary<string,int> choices0 = new Dictionary<string, int>();
