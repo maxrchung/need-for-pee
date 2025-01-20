@@ -12,4 +12,5 @@ public struct PissText
     public float vnTimer;
     public bool completed;
     public float textSpeed;
+    public bool skippable;
 }

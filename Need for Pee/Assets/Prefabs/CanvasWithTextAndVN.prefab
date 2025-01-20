@@ -783,10 +783,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde42caf2d8e3f543a8440dfe0a392fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  vn: {fileID: 6024621572296376198}
   pissBar:
   - {fileID: 2800000, guid: 21e22a95d57ef674693f230a854b7225, type: 3}
   - {fileID: 2800000, guid: 61bef582e24a28f4fa97e81e569c1796, type: 3}
   pissContainer: {fileID: 2800000, guid: c2aea396c64e9b64e8f4fad16613ce6e, type: 3}
-  maxPiss: 30
+  maxPiss: 300
   maxSwitchTime: 2
   minSwitchTime: 0.05
