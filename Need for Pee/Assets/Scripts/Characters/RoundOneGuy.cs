@@ -58,7 +58,7 @@ namespace Characters
 
         protected override async Task DialogTree()
         {
-            if (FlagManager.Check(GameFlag.BathroomFound))
+            if (FlagManager.Check(GameFlag.NeedCode))
             {
                 if (FlagManager.CheckAll(GameFlag.NeedClubCard, GameFlag.HasClubCard))
                 {
@@ -67,6 +67,12 @@ namespace Characters
                 }
 
                 await PostFoundDialogue();
+                return;
+            }
+
+            if (FlagManager.Check(GameFlag.BathroomFound))
+            {
+                await Manager.DisplayText(Strings.Greeting);
                 return;
             }
 

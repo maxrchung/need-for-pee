@@ -20,6 +20,7 @@ namespace Characters
 
             await Manager.DisplayText(Strings.Greeting);
             FlagManager.Set(GameFlag.BathroomFound);
+            FlagManager.Set(GameFlag.NeedCode);
         }
     }
 }

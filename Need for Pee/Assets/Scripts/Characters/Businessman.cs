@@ -13,7 +13,7 @@ namespace Characters
         {
             var choice = -1;
 
-            if (FlagManager.Check(GameFlag.BathroomFound))
+            if (FlagManager.Check(GameFlag.NeedCode))
             {
                 choice = await Manager.DisplayChoice(Strings.Greeting, "ok", "what code");
                 if (choice == 0) return;

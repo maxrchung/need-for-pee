@@ -9,7 +9,7 @@ namespace Characters
         protected override async Task DialogTree()
         {
             var choices = new List<string>() { "omg hi", "no" };
-            if (!FlagManager.Check(GameFlag.HasCode))
+            if (FlagManager.Check(GameFlag.NeedCode))
             {
                 choices.Add("what is code");
             }

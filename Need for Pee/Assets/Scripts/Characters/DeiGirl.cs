@@ -35,12 +35,13 @@ namespace Characters
             choice = await Manager.DisplayChoice("dont know", choices.ToArray());
             if (choice == 0) return;
             await Manager.DisplayText("fine ok code is miku");
+            FlagManager.Unset(GameFlag.NeedCode);
             FlagManager.Set(GameFlag.HasCode);
         }
 
         protected override async Task DialogTree()
         {
-            if (FlagManager.Check(GameFlag.BathroomFound))
+            if (FlagManager.Check(GameFlag.NeedCode))
             {
                 await CodeTree();
                 return;
