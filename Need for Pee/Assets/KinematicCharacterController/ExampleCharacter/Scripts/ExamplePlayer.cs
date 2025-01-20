@@ -18,6 +18,7 @@ namespace KinematicCharacterController.Examples
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
         private int _textArrayIndex = -1;
+        private bool _disabled = false;
         private IInteractable _interactable = null;
 
         private void Start()
@@ -32,13 +33,20 @@ namespace KinematicCharacterController.Examples
             CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
         }
 
+        public void Disable()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            _disabled = true;
+        }
+
+        public void Enable()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            _disabled = false;
+        }
+
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-
             var hasHit = false;
             if (Physics.Raycast(CharacterCamera.Transform.position, CharacterCamera.Transform.forward,
                     out RaycastHit hit, 4f))
@@ -65,6 +73,7 @@ namespace KinematicCharacterController.Examples
                 _interactable = null;
             }
 
+            if (_disabled) return;
             HandleCharacterInput();
         }
 

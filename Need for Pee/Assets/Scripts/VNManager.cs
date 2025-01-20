@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Threading.Tasks;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
@@ -10,33 +11,41 @@ using UnityEngine.Windows.Speech;
 
 public class VNManager : MonoBehaviour
 {
-    public TextManagerScript textManager; 
+    public TextManagerScript textManager;
     public float dialogueScale;
     public float choiceScale;
     public Canvas canvas;
     public GameObject dialoguePanel;
     public GameObject[] buttons;
-    public int currentIndex = 0;
-    VNTreeNode[] currentVNTree;
+    private bool _isInChoice = false;
     public bool isPlaying = false;
-    int currentPissText = 0;
-    KeyValuePair<int,String>[] pissChoices;
-    Vector2 dialoguePosition;
-    Vector2[] choicePositions = new Vector2[3];
+    private readonly List<int> _textsToClear = new List<int>();
+    Vector2 _dialoguePosition;
+    private int _mainText = -1;
+
+    readonly Vector2[] _choicePositions = new Vector2[3];
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private TaskCompletionSource<int> _choiceTask = null;
+
     void Start()
     {
-        dialoguePanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,canvas.GetComponent<RectTransform>().rect.width);
-        dialoguePanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,canvas.GetComponent<RectTransform>().rect.height * 0.2f);
-        dialoguePosition.x = canvas.GetComponent<RectTransform>().rect.width * 0.05f;
-        dialoguePosition.y = canvas.GetComponent<RectTransform>().rect.height * 0.875f;
-        for(int i = 0; i < 3; i++)
+        dialoguePanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
+            canvas.GetComponent<RectTransform>().rect.width);
+        dialoguePanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+            canvas.GetComponent<RectTransform>().rect.height * 0.2f);
+        _dialoguePosition.x = canvas.GetComponent<RectTransform>().rect.width * 0.05f;
+        _dialoguePosition.y = canvas.GetComponent<RectTransform>().rect.height * 0.875f;
+        for (int i = 0; i < 3; i++)
         {
             buttons[i].GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top,
-            canvas.GetComponent<RectTransform>().rect.height * (0.1f + 0.2f * i),canvas.GetComponent<RectTransform>().rect.height * 0.1f);
-            choicePositions[i].y = canvas.GetComponent<RectTransform>().rect.height * (0.1f + 0.2f * i) + 10;
-            choicePositions[i].x = canvas.GetComponent<RectTransform>().rect.width/2 - buttons[i].GetComponent<RectTransform>().rect.width/2 + 25;
+                canvas.GetComponent<RectTransform>().rect.height * (0.1f + 0.2f * i),
+                canvas.GetComponent<RectTransform>().rect.height * 0.1f);
+            _choicePositions[i].y = canvas.GetComponent<RectTransform>().rect.height * (0.1f + 0.2f * i) + 10;
+            _choicePositions[i].x = canvas.GetComponent<RectTransform>().rect.width / 2 -
+                buttons[i].GetComponent<RectTransform>().rect.width / 2 + 25;
         }
+
         dialoguePanel.SetActive(false);
         ClearButtons();
     }
@@ -44,124 +53,61 @@ public class VNManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (_mainText == -1) return;
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if(!isPlaying)
+            if (!textManager.IsCompleted(_mainText))
             {
-                //RunDialogueTree(TestCreate());
-                //^ how to activate a dialogue tree you created
+                textManager.CompleteVN(_mainText);
             }
-            else
+            else if (_choiceTask != null && !_isInChoice)
             {
-                Next();
+                SelectChoice(-1);
             }
-        }
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            if(!isPlaying)
-            {
-                RunDialogueTree(TestCreate());
-            }
-        }
-        /*
-        if(isPlaying && currentVNTree[currentIndex].choice)
-        {
-            if(Input.GetKeyDown(KeyCode.A))
-            {
-                SelectChoice(0);
-            }
-            if(Input.GetKeyDown(KeyCode.B))
-            {
-                SelectChoice(1);
-            }
-            if(Input.GetKeyDown(KeyCode.C))
-            {
-                SelectChoice(2);
-            }
-        }
-        */
-    }
-
-    public void RunDialogueTree(VNTreeNode[] tree)
-    {
-        //begin selected dialogue tree
-        currentVNTree = tree;
-        isPlaying = true;
-        currentIndex = 0;
-        currentPissText = textManager.PissTextGeneration(currentVNTree[currentIndex].dialogue,dialoguePosition,dialogueScale,true);
-        dialoguePanel.SetActive(true);
-    }
-
-    public void Next()
-    {
-        //goes to next entry in tree, will not work if current entry is a choice
-        if(textManager.IsCompleted(currentPissText))
-        {
-            if(currentVNTree[currentIndex].lastMessage)
-            {
-                isPlaying = false;
-                textManager.ClearText(currentPissText);
-                dialoguePanel.SetActive(false);
-            }
-            else if(currentVNTree[currentIndex].choice == false)
-            {
-                currentIndex++;
-                currentPissText = DisplayNextLine(currentIndex);
-            }
-        }
-        else
-        {
-            textManager.CompleteVN(currentPissText);
         }
     }
 
     public void SelectChoice(int choice)
     {
-        //for selecting the choice
-        if(choice < currentVNTree[currentIndex].choices.Count)
-        {
-            ClearButtons();
-            currentIndex = currentVNTree[currentIndex].choices[pissChoices[choice].Value];
-            textManager.ClearText(currentPissText);
-            foreach(KeyValuePair<int,string> kvp in pissChoices)
-            {
-                textManager.ClearText(kvp.Key);
-            }
-            //currentPissText = textManager.PissTextGeneration(currentVNTree[currentIndex].dialogue,dialoguePosition,dialogueScale,true);
-            currentPissText = DisplayNextLine(currentIndex);
-        }
+        ClearText();
+        ClearButtons();
+        var task = _choiceTask;
+        _choiceTask = null;
+        task.SetResult(choice);
     }
 
-    int DisplayNextLine(int displayIndex)
+    private void AddString(string value, Vector2 position, float scale, bool vn)
     {
-        if(currentVNTree[displayIndex].choice)
-        {
-            textManager.ClearText(currentPissText);
-            return DisplayChoice();
-        }
-        else
-        {
-            textManager.ClearText(currentPissText);
-            return textManager.PissTextGeneration(currentVNTree[displayIndex].dialogue,dialoguePosition,dialogueScale,true);
-        }
+        _textsToClear.Add(textManager.PissTextGeneration(value, position, scale, vn));
+        if (vn) _mainText = _textsToClear.Last();
     }
 
-    int DisplayChoice()
+    public Task<int> DisplayText(string text)
     {
-        DisplayButtons(currentVNTree[currentIndex].choices.Count);
-        pissChoices = new KeyValuePair<int,string>[currentVNTree[currentIndex].choices.Count];
-        int choiceCount = 0;
-        foreach(KeyValuePair<string,int> kvp in currentVNTree[currentIndex].choices)
+        _isInChoice = false;
+        AddString(text, _dialoguePosition, dialogueScale, true);
+        _choiceTask = new TaskCompletionSource<int>();
+        return _choiceTask.Task;
+    }
+
+    public Task<int> DisplayChoice(string text, params string[] choices)
+    {
+        _isInChoice = true;
+        DisplayButtons(choices.Length);
+        var idx = 0;
+        foreach (var choice in choices)
         {
-            pissChoices[choiceCount]=new KeyValuePair<int,string>(textManager.PissTextGeneration(kvp.Key,choicePositions[choiceCount],choiceScale,false),kvp.Key);
-            choiceCount++;
+            AddString(choice, _choicePositions[idx++], choiceScale, false);
         }
-        return textManager.PissTextGeneration(currentVNTree[currentIndex].dialogue,dialoguePosition,dialogueScale,true);
+
+        AddString(text, _dialoguePosition, dialogueScale, true);
+        _choiceTask = new TaskCompletionSource<int>();
+        return _choiceTask.Task;
     }
 
     void DisplayButtons(int numChoices)
     {
-        for(int i = 0; i < numChoices; i++)
+        for (int i = 0; i < numChoices; i++)
         {
             buttons[i].SetActive(true);
         }
@@ -169,33 +115,20 @@ public class VNManager : MonoBehaviour
 
     void ClearButtons()
     {
-        foreach(GameObject g in buttons)
+        foreach (GameObject g in buttons)
         {
             g.SetActive(false);
         }
     }
 
-    VNTreeNode[] TestCreate()
+    void ClearText()
     {
-        //example of what a dialogue tree looks like
-        //VNTreeNode("text you want here", true = terminates dialogue after this line/false = go to next immediate node
-        //after this line/Dictionary = this is a choice dialogue)
-        VNTreeNode[] testTree = new VNTreeNode[7];
-        testTree[0] = new VNTreeNode("test0",false);
-        Dictionary<string,int> choices0 = new Dictionary<string, int>();
-        choices0["a"] = 2;
-        choices0["b"] = 3;
-        choices0["c"] = 4;
-        Dictionary<string,int> choices1 = new Dictionary<string, int>();
-        choices1["d"] = 5;
-        choices1["e"] = 6;
-        testTree[1] = new VNTreeNode("choice?",choices0);
-        testTree[2] = new VNTreeNode("testa",true);
-        testTree[3] = new VNTreeNode("testb",true);
-        testTree[4] = new VNTreeNode("testc?",choices1);
-        testTree[5] = new VNTreeNode("testd",true);
-        testTree[6] = new VNTreeNode("teste",true);
+        foreach (var item in _textsToClear)
+        {
+            textManager.ClearText(item);
+        }
 
-        return testTree;
+        _textsToClear.Clear();
+        _mainText = -1;
     }
 }
