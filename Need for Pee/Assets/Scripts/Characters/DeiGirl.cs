@@ -7,13 +7,22 @@ namespace Characters
     {
         private struct Strings
         {
-            public static string Greeting = "hi i am dei girl";
+            public static string Greeting => FlagManager.Check(GameFlag.IsStupid) ? StupidGreeting : DefaultGreeting;
+            public static readonly string DefaultGreeting = "hi i am character";
+            public static readonly string StupidGreeting = "you are stupid and smelly";
         }
 
         private async Task PreBathroomFound()
         {
             var choice = await Manager.DisplayChoice(Strings.Greeting, "where bathroom", "bye");
             if (choice == 1) return;
+            if (FlagManager.Check(GameFlag.IsStupid))
+            {
+                await Manager.DisplayText("go away stupid");
+                return;
+            }
+
+            FlagManager.Set(GameFlag.IsStupid);
             await Manager.DisplayChoice("are you stupid", "yes", "yes");
         }
 
