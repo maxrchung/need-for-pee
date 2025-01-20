@@ -1,19 +1,25 @@
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ItemObject : MonoBehaviour, IInteractable
+public class ItemObject : BaseCharacter
 {
-    public GameFlag ActivateFlag = GameFlag.NullFlag;
-    public GameFlag RequiredFlag = GameFlag.NullFlag;
+    public GameFlag activateFlag = GameFlag.NullFlag;
+    public GameFlag requiredFlag = GameFlag.NullFlag;
+    public string text = "i am item";
+    public string choiceYes = "take";
 
-    public void Interact()
-    {
-        FlagManager.Set(ActivateFlag);
-        gameObject.SetActive(false);
-    }
-
-    public bool CanInteract()
+    protected override bool ShouldBeInteractable()
     {
         if (!gameObject.activeSelf) return false;
-        return RequiredFlag == GameFlag.NullFlag || FlagManager.Check(RequiredFlag);
+        return requiredFlag == GameFlag.NullFlag || FlagManager.Check(requiredFlag);
+    }
+
+    protected override async Task DialogTree()
+    {
+        var choice = await Manager.DisplayChoice(text, choiceYes, "no");
+        if (choice == 1) return;
+        FlagManager.Set(activateFlag);
+        gameObject.SetActive(false);
     }
 }
