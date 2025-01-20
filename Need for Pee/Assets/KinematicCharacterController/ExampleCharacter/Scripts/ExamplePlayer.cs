@@ -51,9 +51,7 @@ namespace KinematicCharacterController.Examples
             if (Physics.Raycast(CharacterCamera.Transform.position, CharacterCamera.Transform.forward,
                     out RaycastHit hit, 4f))
             {
-                _interactable = hit.collider.isTrigger
-                    ? hit.collider.gameObject.GetComponent<IInteractable>()
-                    : null;
+                _interactable = hit.collider.gameObject.GetComponent<IInteractable>();
                 if (_interactable != null && _interactable.CanInteract())
                 {
                     if (_textArrayIndex == -1)
