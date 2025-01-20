@@ -24,7 +24,7 @@ public class TextManagerScript : MonoBehaviour
         {
             textArray[i].active = false;
         }
-        PissTextGeneration("@!?.,#/\"a\"", new Vector2(10,10),0.25f,true);
+        //PissTextGeneration("@!?.,#/\"a\"", new Vector2(10,10),0.25f,true);
     }
 
     // Update is called once per frame
