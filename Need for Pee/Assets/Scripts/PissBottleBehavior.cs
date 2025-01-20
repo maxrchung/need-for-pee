@@ -20,7 +20,6 @@ public class PissBottleBehavior : MonoBehaviour, IInteractable
     public void Interact()
     {
         _used = true;
-        Debug.Log($"Enabled 1: {EmptyBottleMesh.enabled}, 2: {FullBottleMesh.enabled}");
         EmptyBottleMesh.enabled = false;
         FullBottleMesh.enabled = true;
     }

@@ -13,13 +13,9 @@ public class TextManagerScript : MonoBehaviour
 {
     public Texture2D[] letters;
     public Texture2D[] numbers;
-    public float textSpeed = 0.1f;//time between next glyph appearing
-    Dictionary<int,float> vnTimers = new Dictionary<int, float>();
-    Dictionary<int,int> currentGlyphTracker = new Dictionary<int, int>();
-    public List<PissText> textList = new List<PissText>();
-    PissText[] textArray = new PissText[10];
-    int textArrayCount;
-    
+    public Texture2D[] punctuation;
+    public float defaultTextSpeed = 0.1f;//time between next glyph appearing
+    public PissText[] textArray = new PissText[10];
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +24,7 @@ public class TextManagerScript : MonoBehaviour
         {
             textArray[i].active = false;
         }
-        //PissTextGeneration("Press P to interact", new Vector2(10,10),0.25f,true);
+        //PissTextGeneration("@!?.,#/\"a\"", new Vector2(10,10),0.25f,true);
     }
 
     // Update is called once per frame
@@ -43,11 +39,15 @@ public class TextManagerScript : MonoBehaviour
                     if(textArray[i].currentGlyph < textArray[i].glyphs.Length)
                     {
                         textArray[i].vnTimer += Time.deltaTime;
-                        if(textArray[i].vnTimer > textSpeed)
+                        if(textArray[i].vnTimer > textArray[i].textSpeed)
                         {
                             textArray[i].currentGlyph += 1;
                             textArray[i].vnTimer = 0f;
                         }
+                    }
+                    else
+                    {
+                        textArray[i].completed = true;
                     }
                 }
             }
@@ -61,18 +61,43 @@ public class TextManagerScript : MonoBehaviour
         newPiss.position = position;
         newPiss.scale = scale;
         newPiss.vn = vn;
+        newPiss.textSpeed = defaultTextSpeed;
         newPiss.glyphs = (s.ToUpper()).ToIntArray();
         if(newPiss.vn)
         {
-            //currentGlyphTracker[textList.Count] = 0;
-            //vnTimers[textList.Count] = 0f;
             newPiss.currentGlyph = 0;
             newPiss.vnTimer = 0;
+            newPiss.completed = false;
         }
         else
         {
-            //currentGlyphTracker[textList.Count] = newPiss.glyphs.Length;
             newPiss.currentGlyph = newPiss.glyphs.Length;
+            newPiss.completed = true;
+        }
+        newPiss.active = true;
+        return AddToTextArray(newPiss);
+    }
+
+    public int PissTextGeneration(string s, Vector2 position, float scale, bool vn, float speed)
+    {
+        //alternate constructor that allows you to add textspeed
+        PissText newPiss = new PissText();
+        newPiss.text = s;
+        newPiss.position = position;
+        newPiss.scale = scale;
+        newPiss.vn = vn;
+        newPiss.textSpeed = speed;
+        newPiss.glyphs = (s.ToUpper()).ToIntArray();
+        if(newPiss.vn)
+        {
+            newPiss.currentGlyph = 0;
+            newPiss.vnTimer = 0;
+            newPiss.completed = false;
+        }
+        else
+        {
+            newPiss.currentGlyph = newPiss.glyphs.Length;
+            newPiss.completed = true;
         }
         newPiss.active = true;
         return AddToTextArray(newPiss);
@@ -93,6 +118,17 @@ public class TextManagerScript : MonoBehaviour
         textArray[index].text = newText;
         textArray[index].glyphs = (newText.ToUpper()).ToIntArray();
         textArray[index].currentGlyph = textArray[index].glyphs.Length;
+    }
+
+    public void CompleteVN(int index)
+    {
+        textArray[index].currentGlyph = textArray[index].glyphs.Length;
+        textArray[index].completed = true;
+    }
+
+    public bool IsCompleted(int index)
+    {
+        return textArray[index].completed;
     }
 
     public void ClearText(int index)
@@ -123,7 +159,6 @@ public class TextManagerScript : MonoBehaviour
 
     void OnGUI()
     {
-
         for(int texts = 0; texts < textArray.Length; texts++)
         {   
             if(textArray[texts].active)
@@ -148,11 +183,67 @@ public class TextManagerScript : MonoBehaviour
                     }
                     else if(currentGlyph == 32)
                     {
+                        //space
                         textPosition += (int)(letters[0].width * textArray[texts].scale);
+                    }
+                    else if(currentGlyph == 33)
+                    {
+                        //emark
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition, textArray[texts].position.y,
+                        punctuation[0].width * textArray[texts].scale,punctuation[0].height * 2 * textArray[texts].scale),punctuation[0]);
+                        textPosition += (int)(punctuation[0].width * textArray[texts].scale);
+                    }
+                    else if(currentGlyph == 34)
+                    {
+                        //quotes
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition, textArray[texts].position.y,
+                        punctuation[1].width * textArray[texts].scale,punctuation[1].height * textArray[texts].scale),punctuation[1]);
+                        textPosition += (int)(punctuation[1].width * textArray[texts].scale);
+                    }
+                    else if(currentGlyph == 35)
+                    {
+                        //pound
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition, textArray[texts].position.y,
+                        punctuation[2].width * textArray[texts].scale,punctuation[2].height * textArray[texts].scale),punctuation[2]);
+                        textPosition += (int)(punctuation[2].width * textArray[texts].scale);
+                    }
+                    else if(currentGlyph == 44)
+                    {
+                        //comma
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition, textArray[texts].position.y,
+                        punctuation[3].width * textArray[texts].scale,punctuation[3].height * 2 * textArray[texts].scale),punctuation[3]);
+                        textPosition += (int)(punctuation[3].width * textArray[texts].scale);
+                    }
+                    else if(currentGlyph == 46)
+                    {
+                        //period
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition, textArray[texts].position.y,
+                        punctuation[4].width * textArray[texts].scale,punctuation[4].height * 2 * textArray[texts].scale),punctuation[4]);
+                        textPosition += (int)(punctuation[4].width * textArray[texts].scale);
+                    }
+                    else if(currentGlyph == 47)
+                    {
+                        //fslash
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition, textArray[texts].position.y,
+                        punctuation[5].width * textArray[texts].scale,punctuation[5].height * 2 * textArray[texts].scale),punctuation[5]);
+                        textPosition += (int)(punctuation[5].width * textArray[texts].scale);
+                    }
+                    else if(currentGlyph == 63)
+                    {
+                        //qmark
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition, textArray[texts].position.y,
+                        punctuation[6].width * textArray[texts].scale,punctuation[6].height * textArray[texts].scale),punctuation[6]);
+                        textPosition += (int)(punctuation[6].width * textArray[texts].scale);
+                    }
+                    else if(currentGlyph == 64)
+                    {
+                        //atmark
+                        GUI.DrawTexture(new Rect(textArray[texts].position.x + textPosition, textArray[texts].position.y,
+                        punctuation[7].width * textArray[texts].scale,punctuation[7].height * textArray[texts].scale),punctuation[7]);
+                        textPosition += (int)(punctuation[7].width * textArray[texts].scale);
                     }
                 }
             }
         }
-        
     }
 }
