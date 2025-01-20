@@ -16,7 +16,7 @@ public class StartScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startText = text.PissTextGeneration("NEED2PEE", new Vector2(Screen.width*0.15f,Screen.height*0.35f),0.35f,true);
+        startText = text.PissTextGeneration("NEED for PEE", new Vector2(Screen.width*0.025f,Screen.height*0.35f),0.35f,true);
         StartCoroutine(WaitForText());
     }
 
@@ -50,7 +50,7 @@ public class StartScript : MonoBehaviour
             var choices0 = new List<string>() { "so whats the deal"};
             var choices1 = new List<string>() { "yes","no"};
             var choices2 = new List<string>() {"lets pee"};
-            var choice0 = await vn.DisplayChoice("Welcome to need2pee", choices0.ToArray());
+            var choice0 = await vn.DisplayChoice("Welcome to need for pee", choices0.ToArray());
             switch (choice0)
             {
                 case 0:
