@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEditor.Rendering;
@@ -8,18 +9,31 @@ public class StartScript : MonoBehaviour
 {
     public VNManager vn;
     public TextManagerScript text;
-    public int startText;
+    int startText;
+    int keyText;
+    bool ok = false;
+    bool started = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startText = text.PissTextGeneration("NEED2PEE", new Vector2(Screen.width*0.15f,Screen.height*0.35f),0.35f,true);
+        StartCoroutine(WaitForText());
+    }
+
+    IEnumerator WaitForText()
+    {
+        yield return new WaitForSeconds(2);
+        keyText = text.PissTextGeneration("left click to start", new Vector2(Screen.width * 0.25f, Screen.height*0.65f),0.15f,false);
+        ok = true;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetMouseButtonDown(0) && !started && ok)
         {
             text.ClearText(startText);
+            text.ClearText(keyText);
+            started = true;
             menu();
         }
     }
@@ -43,6 +57,7 @@ public class StartScript : MonoBehaviour
                     await vn.DisplayText("need for pee so you entered store");
                     await vn.DisplayText("find pee place please");
                     await vn.DisplayText("WASD and Mouse to move");
+                    await vn.DisplayText("Left mouse button for dialogue");
                     await vn.DisplayText("p to interact when prompted");
                     var choice1 = await vn.DisplayChoice("get it?", choices1.ToArray());
                     switch (choice1)
