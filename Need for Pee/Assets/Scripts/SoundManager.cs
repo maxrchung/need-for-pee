@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public enum SoundType
 {
@@ -34,8 +35,16 @@ public class SoundManager : MonoBehaviour
 	private void Start()
     {
 		audioSource = GetComponent<AudioSource>();
+#if UNITY_EDITOR
+	if (EditorApplication.isPlaying)
+	{
 		// play BGM
 		audioSource.Play();
+	}
+#else
+		// play BGM
+		audioSource.Play();
+#endif
 	}
 
     // Update is called once per frame
@@ -52,7 +61,8 @@ public class SoundManager : MonoBehaviour
         instance.audioSource.PlayOneShot(clips[UnityEngine.Random.Range(0, clips.Length)], volume);
 	}
 
-    private void OnEnable()
+#if UNITY_EDITOR
+	private void OnEnable()
     {
 	    string[] names = Enum.GetNames(typeof(SoundType));
 		Array.Resize(ref soundList, names.Length);
@@ -61,6 +71,7 @@ public class SoundManager : MonoBehaviour
 		    soundList[i].name = names[i];
 		}
 	}
+#endif
 }
 
 [Serializable]
