@@ -43,8 +43,8 @@ public class VNManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             buttons[i].GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top,
-                canvas.GetComponent<RectTransform>().rect.height * (0.1f + 0.2f * i), canvas.GetComponent<RectTransform>().rect.height * 0.1f);
-            _choicePositions[i].y = Screen.height * (0.12f + 0.2f * i);
+                canvas.GetComponent<RectTransform>().rect.height * (0.15f + 0.2f * i), canvas.GetComponent<RectTransform>().rect.height * 0.1f);
+            _choicePositions[i].y = Screen.height * (0.17f + 0.2f * i);
             _choicePositions[i].x = (float)Screen.width * 0.5f - buttons[i].GetComponent<RectTransform>().rect.width * 0.45f;
         }
 
@@ -84,6 +84,12 @@ public class VNManager : MonoBehaviour
         if (vn) _mainText = _textsToClear.Last();
     }
 
+    private void AddSlowString(string value, Vector2 position, float scale, bool vn, float speed, bool skippable)
+    {
+        _textsToClear.Add(textManager.PissTextGeneration(value, position, scale, vn, speed, skippable));
+        if (vn) _mainText = _textsToClear.Last();
+    }
+
     public Task<int> DisplayText(string text)
     {
         _isInChoice = false;
@@ -97,6 +103,18 @@ public class VNManager : MonoBehaviour
     {
         dialoguePanel.SetActive(true);
         AddString(text, _dialoguePosition, dialogueScale, true);
+        _isInChoice = true;
+        StartCoroutine(WaitForText(choices));
+        
+        
+        _choiceTask = new TaskCompletionSource<int>();
+        return _choiceTask.Task;
+    }
+
+    public Task<int> DisplaySlowChoice(string text, params string[] choices)
+    {
+        dialoguePanel.SetActive(true);
+        AddSlowString(text, _dialoguePosition, dialogueScale, true,0.2f,false);
         _isInChoice = true;
         StartCoroutine(WaitForText(choices));
         
@@ -127,7 +145,7 @@ public class VNManager : MonoBehaviour
         }
     }
 
-    void ClearButtons()
+    public void ClearButtons()
     {
         foreach (GameObject g in buttons)
         {
@@ -135,7 +153,7 @@ public class VNManager : MonoBehaviour
         }
     }
 
-    void ClearText()
+    public void ClearText()
     {
         foreach (var item in _textsToClear)
         {

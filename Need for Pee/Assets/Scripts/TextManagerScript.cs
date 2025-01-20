@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System;
 using UnityEngine.UI;
+using Unity.Burst.CompilerServices;
 
 public class TextManagerScript : MonoBehaviour
 {
@@ -63,6 +64,7 @@ public class TextManagerScript : MonoBehaviour
         newPiss.scale = scale;
         newPiss.vn = vn;
         newPiss.textSpeed = defaultTextSpeed;
+        newPiss.skippable = true;
         newPiss.glyphs = (s.ToUpper()).ToIntArray();
         if(newPiss.vn)
         {
@@ -79,7 +81,7 @@ public class TextManagerScript : MonoBehaviour
         return AddToTextArray(newPiss);
     }
 
-    public int PissTextGeneration(string s, Vector2 position, float scale, bool vn, float speed)
+    public int PissTextGeneration(string s, Vector2 position, float scale, bool vn, float speed, bool skippable)
     {
         //alternate constructor that allows you to add textspeed
         PissText newPiss = new PissText();
@@ -88,6 +90,7 @@ public class TextManagerScript : MonoBehaviour
         newPiss.scale = scale;
         newPiss.vn = vn;
         newPiss.textSpeed = speed;
+        newPiss.skippable = skippable;
         newPiss.glyphs = (s.ToUpper()).ToIntArray();
         if(newPiss.vn)
         {
@@ -123,8 +126,11 @@ public class TextManagerScript : MonoBehaviour
 
     public void CompleteVN(int index)
     {
-        textArray[index].currentGlyph = textArray[index].glyphs.Length;
-        textArray[index].completed = true;
+        if(textArray[index].skippable)
+        {
+            textArray[index].currentGlyph = textArray[index].glyphs.Length;
+            textArray[index].completed = true;
+        }
     }
 
     public bool IsCompleted(int index)
