@@ -2394,6 +2394,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309534419}
   m_Mesh: {fileID: 6360135341456839332, guid: bb285d77f781a8c43b601af8686d7065, type: 3}
+--- !u!1 &359630615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -457958462724860445, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
+  m_PrefabInstance: {fileID: 851093585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &359630619
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359630615}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6649735134400365339, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
 --- !u!1001 &360120827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2512,6 +2539,33 @@ MonoBehaviour:
   requiredFlag: 2
   text: i am round one club card
   choiceYes: take
+--- !u!1 &360793637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -457958462724860445, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
+  m_PrefabInstance: {fileID: 1362062289}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &360793641
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360793637}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6649735134400365339, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
 --- !u!1 &380130960
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,7 +5949,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -457958462724860445, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 359630619}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
 --- !u!1001 &854460291
 PrefabInstance:
@@ -10707,7 +10764,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -457958462724860445, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 360793641}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
 --- !u!1001 &1382960667
 PrefabInstance:
