@@ -1,12 +1,16 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Windows.Speech;
 
 public class VNManager : MonoBehaviour
@@ -34,16 +38,14 @@ public class VNManager : MonoBehaviour
             canvas.GetComponent<RectTransform>().rect.width);
         dialoguePanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
             canvas.GetComponent<RectTransform>().rect.height * 0.2f);
-        _dialoguePosition.x = canvas.GetComponent<RectTransform>().rect.width * 0.05f;
-        _dialoguePosition.y = canvas.GetComponent<RectTransform>().rect.height * 0.875f;
+        _dialoguePosition.x = Screen.width*0.05f;
+        _dialoguePosition.y = Screen.height*0.85f;
         for (int i = 0; i < 3; i++)
         {
             buttons[i].GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top,
-                canvas.GetComponent<RectTransform>().rect.height * (0.1f + 0.2f * i),
-                canvas.GetComponent<RectTransform>().rect.height * 0.1f);
-            _choicePositions[i].y = canvas.GetComponent<RectTransform>().rect.height * (0.1f + 0.2f * i) + 10;
-            _choicePositions[i].x = canvas.GetComponent<RectTransform>().rect.width / 2 -
-                buttons[i].GetComponent<RectTransform>().rect.width / 2 + 25;
+                canvas.GetComponent<RectTransform>().rect.height * (0.1f + 0.2f * i), canvas.GetComponent<RectTransform>().rect.height * 0.1f);
+            _choicePositions[i].y = Screen.height * (0.12f + 0.2f * i);
+            _choicePositions[i].x = (float)Screen.width * 0.5f - buttons[i].GetComponent<RectTransform>().rect.width * 0.45f;
         }
 
         dialoguePanel.SetActive(false);
@@ -87,22 +89,34 @@ public class VNManager : MonoBehaviour
         _isInChoice = false;
         AddString(text, _dialoguePosition, dialogueScale, true);
         _choiceTask = new TaskCompletionSource<int>();
+        dialoguePanel.SetActive(true);
         return _choiceTask.Task;
     }
 
     public Task<int> DisplayChoice(string text, params string[] choices)
     {
+        dialoguePanel.SetActive(true);
+        AddString(text, _dialoguePosition, dialogueScale, true);
         _isInChoice = true;
+        StartCoroutine(WaitForText(choices));
+        
+        
+        _choiceTask = new TaskCompletionSource<int>();
+        return _choiceTask.Task;
+    }
+
+    IEnumerator WaitForText(params string[] choices)
+    {
+        while(textManager.textArray[_textsToClear[_mainText]].completed == false)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
         DisplayButtons(choices.Length);
         var idx = 0;
         foreach (var choice in choices)
         {
             AddString(choice, _choicePositions[idx++], choiceScale, false);
         }
-
-        AddString(text, _dialoguePosition, dialogueScale, true);
-        _choiceTask = new TaskCompletionSource<int>();
-        return _choiceTask.Task;
     }
 
     void DisplayButtons(int numChoices)
@@ -130,5 +144,6 @@ public class VNManager : MonoBehaviour
 
         _textsToClear.Clear();
         _mainText = -1;
+        dialoguePanel.SetActive(false);
     }
 }

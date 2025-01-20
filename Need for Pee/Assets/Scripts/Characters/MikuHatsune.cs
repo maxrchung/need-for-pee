@@ -27,8 +27,7 @@ namespace Characters
                     await Manager.DisplayText("yes im miku hatsune");
                     break;
                 case 2:
-                    await Manager.DisplayText("code is miku");
-                    FlagManager.Set(GameFlag.HasCode);
+                    await Manager.DisplayText("wrong girl ur sexist");
                     break;
             }
         }
