@@ -26,17 +26,16 @@ public class SoundManager : MonoBehaviour
 
 	private void Awake()
 	{
+		Debug.Log("soundmanager awake");
 		instance = this;
 	}
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	private void Start()
     {
-#if !UNITY_EDITOR
 		audioSource = GetComponent<AudioSource>();
 		// play BGM
 		audioSource.Play();
-#endif
 	}
 
     // Update is called once per frame
@@ -53,7 +52,6 @@ public class SoundManager : MonoBehaviour
         instance.audioSource.PlayOneShot(clips[UnityEngine.Random.Range(0, clips.Length)], volume);
 	}
 
-#if UNITY_EDITOR
     private void OnEnable()
     {
 	    string[] names = Enum.GetNames(typeof(SoundType));
@@ -63,7 +61,6 @@ public class SoundManager : MonoBehaviour
 		    soundList[i].name = names[i];
 		}
 	}
-#endif
 }
 
 [Serializable]
