@@ -7,13 +7,22 @@ namespace Characters
     {
         private struct Strings
         {
-            public static string Greeting = "hi i am dei girl";
+            public static string Greeting => FlagManager.Check(GameFlag.IsStupid) ? StupidGreeting : DefaultGreeting;
+            public static readonly string DefaultGreeting = "hi i am character";
+            public static readonly string StupidGreeting = "you are stupid and smelly";
         }
 
         private async Task PreBathroomFound()
         {
             var choice = await Manager.DisplayChoice(Strings.Greeting, "where bathroom", "bye");
             if (choice == 1) return;
+            if (FlagManager.Check(GameFlag.IsStupid))
+            {
+                await Manager.DisplayText("go away stupid");
+                return;
+            }
+
+            FlagManager.Set(GameFlag.IsStupid);
             await Manager.DisplayChoice("are you stupid", "yes", "yes");
         }
 
@@ -26,12 +35,13 @@ namespace Characters
             choice = await Manager.DisplayChoice("dont know", choices.ToArray());
             if (choice == 0) return;
             await Manager.DisplayText("fine ok code is miku");
+            FlagManager.Unset(GameFlag.NeedCode);
             FlagManager.Set(GameFlag.HasCode);
         }
 
         protected override async Task DialogTree()
         {
-            if (FlagManager.Check(GameFlag.BathroomFound))
+            if (FlagManager.Check(GameFlag.NeedCode))
             {
                 await CodeTree();
                 return;

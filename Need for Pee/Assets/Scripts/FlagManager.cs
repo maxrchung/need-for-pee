@@ -15,6 +15,9 @@ public enum GameFlag
     KnowsCodeGiver,
     HasCode,
     DoorUnlocked,
+    IsStupid,
+    SecondDoorFound,
+    NeedCode,
 }
 
 public static class FlagManager

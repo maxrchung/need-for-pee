@@ -9,7 +9,7 @@ namespace Characters
         protected override async Task DialogTree()
         {
             var choices = new List<string>() { "omg hi", "no" };
-            if (FlagManager.Check(GameFlag.KnowsCodeGiver) && !FlagManager.Check(GameFlag.HasCode))
+            if (FlagManager.Check(GameFlag.NeedCode))
             {
                 choices.Add("what is code");
             }
@@ -21,13 +21,16 @@ namespace Characters
                     await Manager.DisplayText("wow frick you dude");
                     await Manager.DisplayText("im gonna flip");
                     gameObject.transform.Rotate(0, 180, 0);
-                    await Manager.DisplayText("go away");
+                    await Manager.DisplayText("seeeeeekaaaaaaaaaai de");
                     break;
                 case 0:
                     await Manager.DisplayText("yes im miku hatsune");
                     break;
                 case 2:
-                    await Manager.DisplayText("wrong girl ur sexist");
+                    if (FlagManager.Check(GameFlag.KnowsCodeGiver))
+                        await Manager.DisplayText("wrong girl ur sexist");
+                    else
+                        await Manager.DisplayText("dont know");
                     break;
             }
         }

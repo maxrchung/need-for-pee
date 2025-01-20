@@ -38,7 +38,7 @@ public class VNManager : MonoBehaviour
             canvas.GetComponent<RectTransform>().rect.width);
         dialoguePanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
             canvas.GetComponent<RectTransform>().rect.height * 0.2f);
-        _dialoguePosition.x = Screen.width*0.05f;
+        _dialoguePosition.x = Screen.width*0.025f;
         _dialoguePosition.y = Screen.height*0.85f;
         for (int i = 0; i < 3; i++)
         {
