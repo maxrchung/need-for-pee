@@ -78,9 +78,9 @@ public class VNManager : MonoBehaviour
         task.SetResult(choice);
     }
 
-    private void AddString(string value, Vector2 position, float scale, bool vn)
+    private void AddString(string value, Vector2 position, float scale, bool vn, bool skippable = true)
     {
-        _textsToClear.Add(textManager.PissTextGeneration(value, position, scale, vn));
+        _textsToClear.Add(textManager.PissTextGeneration(value, position, scale, vn, skippable));
         if (vn) _mainText = _textsToClear.Last();
     }
 
@@ -94,6 +94,15 @@ public class VNManager : MonoBehaviour
     {
         _isInChoice = false;
         AddString(text, _dialoguePosition, dialogueScale, true);
+        _choiceTask = new TaskCompletionSource<int>();
+        dialoguePanel.SetActive(true);
+        return _choiceTask.Task;
+    }
+
+    public Task<int> DisplayUnskippableText(string text)
+    {
+        _isInChoice = false;
+        AddString(text, _dialoguePosition, dialogueScale, true, false);
         _choiceTask = new TaskCompletionSource<int>();
         dialoguePanel.SetActive(true);
         return _choiceTask.Task;

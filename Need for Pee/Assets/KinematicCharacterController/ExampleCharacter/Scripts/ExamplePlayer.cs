@@ -57,7 +57,7 @@ namespace KinematicCharacterController.Examples
                     if (_textArrayIndex == -1)
                     {
                         _textArrayIndex =
-                            TextManager.PissTextGeneration("Press P to interact", new Vector2(10, 10), 0.69f, false);
+                            TextManager.PissTextGeneration("Press P to interact", new Vector2(Screen.width * 0.15f, Screen.height * 0.4f), 0.2f, false);
                     }
 
                     hasHit = true;
