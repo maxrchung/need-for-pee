@@ -48,11 +48,19 @@ public class VNManager : MonoBehaviour
         {
             if(!isPlaying)
             {
-                RunDialogueTree(TestCreate());
+                //RunDialogueTree(TestCreate());
+                //^ how to activate a dialogue tree you created
             }
             else
             {
                 Next();
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            if(!isPlaying)
+            {
+                RunDialogueTree(TestCreate());
             }
         }
         /*
