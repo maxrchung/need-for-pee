@@ -549,7 +549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47fdc36d8cc4fa7abcfa80d91742256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActivateFlag: 3
+  ActivateFlag: 2
+  RequiredFlag: 1
 --- !u!65 &496711877
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -565,7 +566,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -786,7 +787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4110177735273733540, guid: 2008b2b105d2c3440a34c6c4672c1361, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1172
+      value: 1.737
       objectReference: {fileID: 0}
     - target: {fileID: 4110177735273733540, guid: 2008b2b105d2c3440a34c6c4672c1361, type: 3}
       propertyPath: m_LocalPosition.z

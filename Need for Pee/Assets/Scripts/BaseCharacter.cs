@@ -21,6 +21,8 @@ public class BaseCharacter : MonoBehaviour, IInteractable
     {
         throw new NotImplementedException();
     }
+    
+    protected virtual bool ShouldBeInteractable() => true;
 
     private async void TreeWrapper()
     {
@@ -36,5 +38,5 @@ public class BaseCharacter : MonoBehaviour, IInteractable
         TreeWrapper();
     }
 
-    public bool CanInteract() => !InUse;
+    public bool CanInteract() => !InUse && ShouldBeInteractable();
 }

@@ -3,11 +3,14 @@ using UnityEngine;
 
 public enum GameFlag
 {
+    // PLEASE ONLY ADD TO BOTTOM OR BREAK EVERYTHING OK :(
     NullFlag,
+    ClubCardKnown,
     RoundOneClubCard,
-    HasCode1,
     HasKey,
     MikuLeft,
+    KnowsCodeGiver,
+    HasCode,
 }
 
 public static  class FlagManager
