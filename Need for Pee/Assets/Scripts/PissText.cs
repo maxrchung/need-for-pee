@@ -9,5 +9,7 @@ public struct PissText
     public int[] glyphs;
     public int currentGlyph;
     public bool vn;
-    public float vnTimer;   
+    public float vnTimer;
+    public bool completed;
+    public float textSpeed;
 }
