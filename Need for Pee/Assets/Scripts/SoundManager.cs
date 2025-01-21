@@ -23,7 +23,8 @@ public class SoundManager : MonoBehaviour
 {
 	[SerializeField] private SoundList[] soundList;
 	private static SoundManager instance;
-	private AudioSource audioSource;
+	private AudioSource bgmAudioSource;
+	private AudioSource otherAudioSource;
 
 	private void Awake()
 	{
@@ -34,16 +35,17 @@ public class SoundManager : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	private void Start()
     {
-		audioSource = GetComponent<AudioSource>();
+		bgmAudioSource = GetComponents<AudioSource>()[0];
+		otherAudioSource = GetComponents<AudioSource>()[1];
 #if UNITY_EDITOR
 	if (EditorApplication.isPlaying)
 	{
 		// play BGM
-		audioSource.Play();
+		bgmAudioSource.Play();
 	}
 #else
 		// play BGM
-		audioSource.Play();
+		bgmAudioSource.Play();
 #endif
 	}
 
@@ -57,8 +59,16 @@ public class SoundManager : MonoBehaviour
 	{
 		Debug.Log("PlaySound: " + (int)type);
 		// Randomly pick a sound in the soundList
-		AudioClip[] clips = instance.soundList[(int)type].sounds;
-        instance.audioSource.PlayOneShot(clips[UnityEngine.Random.Range(0, clips.Length)], volume);
+		SoundList soundList = instance.soundList[(int)type];
+		AudioClip[] clips = soundList.sounds;
+		instance.otherAudioSource.clip = clips[UnityEngine.Random.Range(0, clips.Length)];
+		instance.otherAudioSource.volume = volume;
+		instance.otherAudioSource.Play();
+	}
+
+	public static void StopSound()
+	{
+		instance.otherAudioSource.Stop();
 	}
 
 #if UNITY_EDITOR
