@@ -5,6 +5,20 @@ namespace Characters
 {
     public class Cat : BaseCharacter
     {
+        public bool isBusinessCat = false;
+
+        protected async Task NonBusinessCat()
+        {
+            await Manager.DisplayUnskippableText("meow....");
+            await Manager.DisplayUnskippableText("meow!");
+            await Manager.DisplaySlowChoice("meowww", "do business already", "what the frick");
+            await Manager.DisplayUnskippableText("meoooowww");
+            var choice = -1;
+            while (choice != 1)
+                choice = await Manager.DisplaySlowChoice("meow", "meow", "wait youre not a business cat");
+            FlagManager.Set(GameFlag.TrickedByCat);
+        }
+
         protected override async Task DialogTree()
         {
             if (FlagManager.Check(GameFlag.CatRequestedCake) && !FlagManager.Check(GameFlag.CatSoldShares))
@@ -31,6 +45,12 @@ namespace Characters
             if (choice != 2)
             {
                 await Manager.DisplayText("meowwwww");
+                return;
+            }
+
+            if (!isBusinessCat)
+            {
+                await NonBusinessCat();
                 return;
             }
 

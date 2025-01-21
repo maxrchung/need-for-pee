@@ -6698,6 +6698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d768c4927a0344e0b2150ccbd7dc9435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBusinessCat: 1
 --- !u!1001 &960857412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7445,6 +7446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d768c4927a0344e0b2150ccbd7dc9435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBusinessCat: 0
 --- !u!1001 &1070528896
 PrefabInstance:
   m_ObjectHideFlags: 0
