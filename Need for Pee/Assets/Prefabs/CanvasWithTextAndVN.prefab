@@ -789,6 +789,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 21e22a95d57ef674693f230a854b7225, type: 3}
   - {fileID: 2800000, guid: 61bef582e24a28f4fa97e81e569c1796, type: 3}
   pissContainer: {fileID: 2800000, guid: c2aea396c64e9b64e8f4fad16613ce6e, type: 3}
-  maxPiss: 120
+  maxPiss: 135
   maxSwitchTime: 2
   minSwitchTime: 0.05
