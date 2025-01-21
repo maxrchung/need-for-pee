@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Characters

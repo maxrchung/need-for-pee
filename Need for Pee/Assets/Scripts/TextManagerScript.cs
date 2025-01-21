@@ -1,6 +1,5 @@
 using GLTFast.Schema;
 using TMPro;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UI = UnityEngine.UI;

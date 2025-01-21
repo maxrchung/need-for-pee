@@ -1073,7 +1073,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 561726918514808017, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
+  m_Mesh: {fileID: 674682000594491763, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
 --- !u!1001 &85202117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2579,7 +2579,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8498801859376521885, guid: fb24f46964b7a2c47a07e4c1da974ba5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 360120829}
+      addedObject: {fileID: 360120837}
     - targetCorrespondingSourceObject: {fileID: -8498801859376521885, guid: fb24f46964b7a2c47a07e4c1da974ba5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 360120833}
@@ -2589,7 +2589,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8498801859376521885, guid: fb24f46964b7a2c47a07e4c1da974ba5, type: 3}
   m_PrefabInstance: {fileID: 360120827}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &360120829
+--- !u!114 &360120833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360120828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47fdc36d8cc4fa7abcfa80d91742256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateFlag: 3
+  requiredFlag: 2
+  text: i am round one club card
+  choiceYes: buy (5 peesos)
+--- !u!64 &360120837
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2610,23 +2626,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 561726918514808017, guid: fb24f46964b7a2c47a07e4c1da974ba5, type: 3}
---- !u!114 &360120833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 360120828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c47fdc36d8cc4fa7abcfa80d91742256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activateFlag: 3
-  requiredFlag: 2
-  text: i am round one club card
-  choiceYes: buy (5 peesos)
+  m_Mesh: {fileID: -245969462372483695, guid: fb24f46964b7a2c47a07e4c1da974ba5, type: 3}
 --- !u!1 &360793637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -457958462724860445, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
@@ -6998,14 +6998,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3458477781862887046, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 963934628}
+      addedObject: {fileID: 963934632}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
 --- !u!1 &963934627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3458477781862887046, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
   m_PrefabInstance: {fileID: 963934626}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &963934628
+--- !u!64 &963934632
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7026,7 +7026,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 561726918514808017, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
+  m_Mesh: {fileID: 674682000594491763, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
 --- !u!1001 &988997020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8787,6 +8787,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 17.627
       objectReference: {fileID: 0}
+    - target: {fileID: 1760122038829320536, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2131272024455027932, guid: e37a3008cc3196446907608219790e09, type: 3}
+    - target: {fileID: 1874536010523277241, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2131272024455027932, guid: e37a3008cc3196446907608219790e09, type: 3}
     - target: {fileID: 2060263341542536840, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.296699
@@ -9027,6 +9035,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 24.45
       objectReference: {fileID: 0}
+    - target: {fileID: 8708999989495818014, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2131272024455027932, guid: e37a3008cc3196446907608219790e09, type: 3}
     - target: {fileID: 9056750849643553074, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3387237
@@ -9070,6 +9082,10 @@ PrefabInstance:
     - {fileID: 207856746398216664, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
     - {fileID: 7583233261391933128, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
     - {fileID: 868386755594991687, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
+    - {fileID: -4127021618184377589, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
+    - {fileID: 1659340449678620527, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
+    - {fileID: -6924282356855539302, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
+    - {fileID: -1283094811584035931, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
       insertIndex: 3
@@ -9087,73 +9103,73 @@ PrefabInstance:
       insertIndex: 42
       addedObject: {fileID: 416123235}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 53
+      insertIndex: 52
       addedObject: {fileID: 1013895434}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 57
+      insertIndex: 56
       addedObject: {fileID: 1831165895}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 58
+      insertIndex: 57
       addedObject: {fileID: 196404373}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 59
+      insertIndex: 58
       addedObject: {fileID: 1905245301}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 60
+      insertIndex: 59
       addedObject: {fileID: 731761233}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 61
+      insertIndex: 60
       addedObject: {fileID: 651695610}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 62
+      insertIndex: 61
       addedObject: {fileID: 134199255}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 63
+      insertIndex: 62
       addedObject: {fileID: 1679285229}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 64
+      insertIndex: 63
       addedObject: {fileID: 829972207}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 65
+      insertIndex: 64
       addedObject: {fileID: 832019426}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 66
+      insertIndex: 65
       addedObject: {fileID: 690033893}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 76
+      insertIndex: 75
       addedObject: {fileID: 70271471}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 81
+      insertIndex: 80
       addedObject: {fileID: 13229396}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 85
+      insertIndex: 84
       addedObject: {fileID: 1025201052}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 102
+      insertIndex: 101
       addedObject: {fileID: 1774829286}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 103
+      insertIndex: 102
       addedObject: {fileID: 1644119475}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 110
+      insertIndex: 107
       addedObject: {fileID: 400976153}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 111
+      insertIndex: 108
       addedObject: {fileID: 686941299}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 112
+      insertIndex: 109
       addedObject: {fileID: 1284895700}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 113
+      insertIndex: 110
       addedObject: {fileID: 1925182995}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 114
+      insertIndex: 111
       addedObject: {fileID: 763403171}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 115
+      insertIndex: 112
       addedObject: {fileID: 746477680}
     - targetCorrespondingSourceObject: {fileID: 1216091742105396720, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
-      insertIndex: 116
+      insertIndex: 113
       addedObject: {fileID: 1897226288}
     - targetCorrespondingSourceObject: {fileID: 7107725047394566019, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
       insertIndex: -1
@@ -9925,7 +9941,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 561726918514808017, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
+  m_Mesh: {fileID: 674682000594491763, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
 --- !u!1001 &1255134222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12147,7 +12163,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 561726918514808017, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
+  m_Mesh: {fileID: 674682000594491763, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
 --- !u!1001 &1546052973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12998,7 +13014,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 561726918514808017, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
+  m_Mesh: {fileID: 674682000594491763, guid: 83a0a28a2064f394d9cb67709ec55ae7, type: 3}
 --- !u!1001 &1664121733
 PrefabInstance:
   m_ObjectHideFlags: 0

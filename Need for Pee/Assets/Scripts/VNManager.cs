@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 using TMPro;
 using Unity.Collections;
 using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Windows.Speech;
 
 public class VNManager : MonoBehaviour
 {
