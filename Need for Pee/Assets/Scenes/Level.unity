@@ -13651,6 +13651,9 @@ MonoBehaviour:
   - name: PEE
     sounds:
     - {fileID: 8300000, guid: 3e1a06a5b634c634fa549f919524153b, type: 3}
+  - name: SHORT_PEE
+    sounds:
+    - {fileID: 8300000, guid: 92c25c51dcd923f4f8e5c6ec9d879716, type: 3}
   - name: FLUSH
     sounds:
     - {fileID: 8300000, guid: 744823df62cc9bf45b77e09f4d8cc9c6, type: 3}

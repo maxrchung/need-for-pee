@@ -7,6 +7,7 @@ using UnityEditor;
 public enum SoundType
 {
 	PEE,
+	SHORT_PEE,
 	FLUSH,
 	JINGLE,
 	HATSUNE_MIKU,
