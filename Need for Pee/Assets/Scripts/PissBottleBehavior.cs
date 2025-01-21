@@ -31,7 +31,7 @@ public class PissBottleBehavior : BaseCharacter
         switch (choice0)
         {
             case 0:
-                int pissTime = (int)(pissBar.BeginEjectingPiss() * 0.1f) * 10;
+                int pissTime = (int)(pissBar.BeginEjectingPiss() * 0.1f) * 12;
                 string pissString = "";
                 for(int i = 0; i < pissTime; i++)
                 {

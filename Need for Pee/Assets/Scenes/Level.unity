@@ -9484,6 +9484,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5599021817591043946, guid: 5737d346f74628c4fada4b373b6d43e9, type: 3}
   m_PrefabInstance: {fileID: 1201884553}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1240801785
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.959
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.537
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.486
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556859793562262951, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_Name
+      value: Pissbottle (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
 --- !u!1001 &1242845901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16166,6 +16223,7 @@ SceneRoots:
   - {fileID: 674223992}
   - {fileID: 1606936318}
   - {fileID: 1631652574}
+  - {fileID: 1240801785}
   - {fileID: 1418893934}
   - {fileID: 380130964}
   - {fileID: 239549274}

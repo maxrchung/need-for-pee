@@ -45,7 +45,7 @@ namespace Characters
                     return;
                 }
 
-                await Manager.DisplayChoice("key is wrong", "what the frick");
+                await Manager.DisplayChoice("key is wrong", "better return it...");
                 FlagManager.Set(GameFlag.DiscoveredKeyWrong);
                 _keyCount++;
             }

@@ -35,6 +35,7 @@ public enum GameFlag
     CatRequestedCake,
     CakeObtained,
     CatSoldShares,
+    BusinessDenied,
 }
 
 public static class FlagManager
