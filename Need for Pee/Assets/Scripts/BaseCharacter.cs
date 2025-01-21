@@ -1,6 +1,6 @@
+using KinematicCharacterController.Examples;
 using System;
 using System.Threading.Tasks;
-using KinematicCharacterController.Examples;
 using UnityEngine;
 
 public class BaseCharacter : MonoBehaviour, IInteractable
@@ -10,18 +10,29 @@ public class BaseCharacter : MonoBehaviour, IInteractable
 
     protected bool InUse = false;
 
+    private GameObject hintLight;
+
     private void OnEnable()
     {
         // Find the VNManager and ExamplePlayer
         Manager = FindAnyObjectByType<VNManager>();
         Player = FindAnyObjectByType<ExamplePlayer>();
+
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/HintLight");
+
+        hintLight = Instantiate(
+            prefab,
+            new Vector3(transform.position.x, 7, transform.position.z),
+            Quaternion.Euler(90, 0, 0),
+            transform
+        );
     }
 
     protected virtual async Task DialogTree()
     {
         throw new NotImplementedException();
     }
-    
+
     protected virtual bool ShouldBeInteractable() => true;
 
     private async void TreeWrapper()
@@ -39,4 +50,20 @@ public class BaseCharacter : MonoBehaviour, IInteractable
     }
 
     public bool CanInteract() => !InUse && ShouldBeInteractable();
+
+    void Update()
+    {
+        var component = hintLight.GetComponent<Light>();
+        var isEnabled = component.enabled;
+
+        if (ShouldBeInteractable() && !isEnabled)
+        {
+            component.enabled = true;
+        }
+
+        if (!ShouldBeInteractable() && isEnabled)
+        {
+            component.enabled = false;
+        }
+    }
 }
