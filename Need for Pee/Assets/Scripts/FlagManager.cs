@@ -27,6 +27,8 @@ public enum GameFlag
     HadKeyGirl,
     HasKeyBathroomGuy,
     HadKeyBathroomGuy,
+    HasKeyRound1Guy,
+    HadKeyRound1Guy,
 }
 
 public static class FlagManager

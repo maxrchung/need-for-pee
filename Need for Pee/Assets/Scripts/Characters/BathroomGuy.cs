@@ -30,7 +30,7 @@ namespace Characters
             if (choice == 1) return;
             if (FlagManager.Check(GameFlag.HasKey))
             {
-                await Manager.DisplayText("you already have key");
+                await Manager.DisplayText("you have key already" + (FlagManager.Check(GameFlag.DiscoveredKeyWrong) ? " go return it" :""));
                 return;
             }
 
