@@ -27,7 +27,7 @@ public class PissBottleBehavior : BaseCharacter
         var choices0 = new List<string>() {"yes...","not yet"};
 
         await Manager.DisplayUnskippableText("an empty gatorade bottle...");
-        var choice0 = await Manager.DisplayChoice("is this what your life has come to?", choices0.ToArray());
+        var choice0 = await Manager.DisplaySlowChoice("is this what your life has come to?", choices0.ToArray());
         switch (choice0)
         {
             case 0:

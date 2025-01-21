@@ -21,7 +21,7 @@ namespace Characters
             await Manager.DisplayUnskippableText("they have no room to negotiate");
             await Manager.DisplayUnskippableText("you can sit them still and pull from their wallets");
             await Manager.DisplayUnskippableText("and rake in every last drop from them");
-            await Manager.DisplayUnskippableText("if youve got the slightest of dosh");
+            await Manager.DisplayUnskippableText("if youve got the slightest of cash");
             await Manager.DisplayUnskippableText("it would be enough to yellow light this");
             await Manager.DisplayChoice("what do you say eh, lad?","need phone to call bank");
             await Manager.DisplayText("well why didn't you say so sooner?!");
