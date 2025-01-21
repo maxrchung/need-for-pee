@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PissBottleBehavior : BaseCharacter
@@ -24,7 +22,7 @@ public class PissBottleBehavior : BaseCharacter
 
     protected override async Task DialogTree()
     {
-        var choices0 = new List<string>() {"yes...","not yet"};
+        var choices0 = new List<string>() { "yes...", "not yet" };
 
         await Manager.DisplayUnskippableText("an empty gatorade bottle...");
         var choice0 = await Manager.DisplaySlowChoice("is this what your life has come to?", choices0.ToArray());
@@ -33,7 +31,7 @@ public class PissBottleBehavior : BaseCharacter
             case 0:
                 int pissTime = (int)(pissBar.BeginEjectingPiss() * 0.1f) * 12;
                 string pissString = "";
-                for(int i = 0; i < pissTime; i++)
+                for (int i = 0; i < pissTime; i++)
                 {
                     pissString += ".";
                 }
@@ -44,6 +42,9 @@ public class PissBottleBehavior : BaseCharacter
                 EmptyBottleMesh.enabled = false;
                 FullBottleMesh.enabled = true;
                 await Manager.DisplayText("although momentarily, the urge is abated");
+
+                var light = GetComponentInChildren<Light>();
+                light.enabled = false;
                 break;
             case 1:
                 break;

@@ -54,6 +54,7 @@ public class VictoryToilet : BaseCharacter
         Manager.ClearButtons();
         Manager.ClearText();
         Player.Disable();
+        SoundManager.PlaySound(SoundType.PEE);
         await Manager.DisplayUnskippableText("you peed!!!");
         await Task.Delay(Timeout.Infinite);
     }
