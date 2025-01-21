@@ -37,7 +37,9 @@ public class PissBottleBehavior : BaseCharacter
                 {
                     pissString += ".";
                 }
+                SoundManager.PlaySound(SoundType.PEE);
                 await Manager.DisplayUnskippableText(pissString);
+                SoundManager.StopSound();
                 _used = true;
                 EmptyBottleMesh.enabled = false;
                 FullBottleMesh.enabled = true;
