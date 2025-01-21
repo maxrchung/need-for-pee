@@ -21,6 +21,13 @@ namespace Characters
 
         protected override async Task DialogTree()
         {
+            if (FlagManager.Check(GameFlag.PissGuyLeft))
+            {
+                SoundManager.PlaySound(SoundType.DOOR_OPEN);
+                gameObject.SetActive(false);
+                return;
+            }
+
             if (FlagManager.Check(GameFlag.SecondDoorUnlocked))
             {
                 await PissGuyTree();

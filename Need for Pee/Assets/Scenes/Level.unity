@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe755903dd4e4458964305b1ff0c12eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phone: {fileID: 1546052974}
 --- !u!64 &57636339
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2625,7 +2626,7 @@ MonoBehaviour:
   activateFlag: 3
   requiredFlag: 2
   text: i am round one club card
-  choiceYes: take
+  choiceYes: buy (5 peesos)
 --- !u!1 &360793637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -457958462724860445, guid: 272f5563aaef2a748b8dc3dab9152ad6, type: 3}
@@ -3548,8 +3549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateFlag: 0
   requiredFlag: 0
-  text: i am item
-  choiceYes: take
+  text: oh no debug key
+  choiceYes: break game
 --- !u!65 &496711877
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3745,7 +3746,7 @@ MonoBehaviour:
   activateFlag: 13
   requiredFlag: 12
   text: shrek 2 on dvd
-  choiceYes: take
+  choiceYes: shrek 2 on dvd
 --- !u!1001 &548921340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6581,8 +6582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateFlag: 25
   requiredFlag: 24
-  text: i am item
-  choiceYes: take
+  text: delicious looking cake
+  choiceYes: steal
 --- !u!1001 &930228822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12087,6 +12088,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: phone
       objectReference: {fileID: 0}
+    - target: {fileID: 4739399850367420723, guid: b78e25f539a30c54fa4d694a32219cf5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12094,6 +12099,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4739399850367420723, guid: b78e25f539a30c54fa4d694a32219cf5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1546052975}
+    - targetCorrespondingSourceObject: {fileID: 4739399850367420723, guid: b78e25f539a30c54fa4d694a32219cf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1546052979}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: b78e25f539a30c54fa4d694a32219cf5, type: 3}
 --- !u!1 &1546052974 stripped
 GameObject:
@@ -12112,6 +12120,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3906c2eda944e9e91e953eb6bd9aa05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &1546052979
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546052974}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6995655510436753321, guid: b78e25f539a30c54fa4d694a32219cf5, type: 3}
 --- !u!4 &1567417031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4353896453404184, guid: c75e91cf060bbf04e89204fa400606df, type: 3}
