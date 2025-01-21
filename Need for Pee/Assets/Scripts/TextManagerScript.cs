@@ -56,7 +56,7 @@ public class TextManagerScript : MonoBehaviour
         }
     }
 
-    public int PissTextGeneration(string s, Vector2 position, float scale, bool vn)
+    public int PissTextGeneration(string s, Vector2 position, float scale, bool vn, bool skippable = true)
     {
         PissText newPiss = new PissText();
         newPiss.text = s;
@@ -64,7 +64,7 @@ public class TextManagerScript : MonoBehaviour
         newPiss.scale = scale;
         newPiss.vn = vn;
         newPiss.textSpeed = defaultTextSpeed;
-        newPiss.skippable = true;
+        newPiss.skippable = skippable;
         newPiss.glyphs = (s.ToUpper()).ToIntArray();
         if(newPiss.vn)
         {

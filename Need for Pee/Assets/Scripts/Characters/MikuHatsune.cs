@@ -22,7 +22,7 @@ namespace Characters
                     await Manager.DisplayText("im gonna flip");
                     gameObject.transform.Rotate(0, 180, 0);
                     SoundManager.PlaySound(SoundType.HATSUNE_MIKU);
-                    await Manager.DisplayText("seeeeeekaaaaaaaaaai de");
+                    await Manager.DisplayUnskippableText("seeeeeekaaaaaaaaaai de");
                     break;
                 case 0:
                     await Manager.DisplayText("yes im miku hatsune");
