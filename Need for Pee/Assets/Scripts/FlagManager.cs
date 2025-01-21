@@ -25,6 +25,8 @@ public enum GameFlag
     DiscoveredKeyWrong,
     HasKeyGirl,
     HadKeyGirl,
+    HasKeyBathroomGuy,
+    HadKeyBathroomGuy,
 }
 
 public static class FlagManager

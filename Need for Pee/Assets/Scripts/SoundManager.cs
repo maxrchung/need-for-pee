@@ -13,6 +13,7 @@ public enum SoundType
 	CVS,
 	DOOR_OPEN,
 	DOOR_CLOSE,
+	ITEM,
 	// VENDING_MACHINE,
 	// FOOTSTEP,
 	// BUTTON_CLICK,

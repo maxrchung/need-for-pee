@@ -19,6 +19,7 @@ public class ItemObject : BaseCharacter
     {
         var choice = await Manager.DisplayChoice(text, choiceYes, "no");
         if (choice == 1) return;
+        SoundManager.PlaySound(SoundType.ITEM);
         FlagManager.Set(activateFlag);
         gameObject.SetActive(false);
     }

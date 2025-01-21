@@ -14,7 +14,7 @@ namespace Characters
                 FlagManager.Set(GameFlag.CanPickUpKey);
             }
 
-            if (FlagManager.Check(GameFlag.HasKey))
+            if (FlagManager.Check(GameFlag.HasKey) && !FlagManager.Check(GameFlag.DiscoveredKeyWrong))
             {
                 await Manager.DisplayChoice("key is wrong", "what the frick");
                 FlagManager.Set(GameFlag.DiscoveredKeyWrong);

@@ -15,6 +15,7 @@ namespace Characters
             {
                 await Manager.DisplayChoice(Strings.Greeting, "miku", "miku", "miku");
                 gameObject.SetActive(false);
+                SoundManager.PlaySound(SoundType.DOOR_OPEN);
                 return;
             }
 

@@ -49,7 +49,10 @@ namespace Characters
                 await Manager.DisplayText("for what");
                 await Manager.DisplayText("i gave you key");
                 await Manager.DisplayChoice("give it back", "ok");
+                SoundManager.PlaySound(SoundType.ITEM);
+                await Manager.DisplayText("go bother someone else");
                 FlagManager.Unset(GameFlag.HasKey);
+                FlagManager.Unset(GameFlag.HasKeyGirl);
                 FlagManager.Set(GameFlag.HadKeyGirl);
                 FlagManager.Unset(GameFlag.DiscoveredKeyWrong);
                 return;
@@ -67,6 +70,7 @@ namespace Characters
             {
                 if (FlagManager.Check(GameFlag.HasShrek2))
                 {
+                    SoundManager.PlaySound(SoundType.ITEM);
                     await Manager.DisplayText("here is key");
                     FlagManager.Set(GameFlag.HasKey);
                     FlagManager.Set(GameFlag.HasKeyGirl);

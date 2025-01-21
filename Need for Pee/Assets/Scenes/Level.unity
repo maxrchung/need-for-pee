@@ -13669,6 +13669,9 @@ MonoBehaviour:
   - name: DOOR_CLOSE
     sounds:
     - {fileID: 8300000, guid: a9d428945aa2ee44fbbfe6a8eeb73f94, type: 3}
+  - name: ITEM
+    sounds:
+    - {fileID: 8300000, guid: 8eac3aec16474bc44853a4ad519b93cb, type: 3}
 --- !u!82 &1796836463
 AudioSource:
   m_ObjectHideFlags: 0
