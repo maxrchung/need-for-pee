@@ -29,6 +29,12 @@ public enum GameFlag
     HadKeyBathroomGuy,
     HasKeyRound1Guy,
     HadKeyRound1Guy,
+    SecondDoorUnlocked,
+    PissGuyNumberFound,
+    RequestCatCommand,
+    CatRequestedCake,
+    CakeObtained,
+    CatSoldShares,
 }
 
 public static class FlagManager
