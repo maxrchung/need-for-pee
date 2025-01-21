@@ -18,6 +18,13 @@ public enum GameFlag
     IsStupid,
     SecondDoorFound,
     NeedCode,
+    CanPickUpKey,
+    HasKey,
+    GirlKeyQuest,
+    HasShrek2,
+    DiscoveredKeyWrong,
+    HasKeyGirl,
+    HadKeyGirl,
 }
 
 public static class FlagManager
@@ -32,6 +39,11 @@ public static class FlagManager
     public static void Unset(GameFlag flag)
     {
         Flags.Set((int)flag, false);
+    }
+
+    public static void ClearAll()
+    {
+        Flags.SetAll(false);
     }
 
     public static bool Check(GameFlag flag)

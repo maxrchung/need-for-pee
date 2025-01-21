@@ -3612,6 +3612,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7449782648777001352, guid: efa430cd60b62a87b8034742fea09309, type: 3}
       insertIndex: -1
       addedObject: {fileID: 522186748}
+    - targetCorrespondingSourceObject: {fileID: 7449782648777001352, guid: efa430cd60b62a87b8034742fea09309, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 522186752}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: efa430cd60b62a87b8034742fea09309, type: 3}
 --- !u!1 &522186747 stripped
 GameObject:
@@ -3640,6 +3643,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6472033283870424552, guid: efa430cd60b62a87b8034742fea09309, type: 3}
+--- !u!114 &522186752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522186747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47fdc36d8cc4fa7abcfa80d91742256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateFlag: 13
+  requiredFlag: 12
+  text: shrek 2 on dvd
+  choiceYes: take
 --- !u!1001 &548921340
 PrefabInstance:
   m_ObjectHideFlags: 0
