@@ -1,10 +1,13 @@
 using System.Threading.Tasks;
 using UnityEditorInternal;
+using UnityEngine;
 
 namespace Characters
 {
     public class Businessman : BaseCharacter
     {
+        public GameObject phone;
+        
         private struct Strings
         {
             public static readonly string Greeting = "business";
@@ -26,8 +29,9 @@ namespace Characters
             await Manager.DisplayChoice("what do you say eh, lad?","need phone to call bank");
             await Manager.DisplayText("well why didn't you say so sooner?!");
             await Manager.DisplayText("best phone business can buy, lets have at it");
-            // yap at the player about business
-            // phone will spawn here soontm
+            await Manager.DisplayText("its right on the table over there");
+            
+            phone.SetActive(true);
             return;
         }
 
