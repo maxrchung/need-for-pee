@@ -15,8 +15,8 @@ public enum SoundType
 	DOOR_OPEN,
 	DOOR_CLOSE,
 	ITEM,
+	SPRINT,
 	// VENDING_MACHINE,
-	// FOOTSTEP,
 	// BUTTON_CLICK,
 }
 
@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
 	private static SoundManager instance;
 	private AudioSource bgmAudioSource;
 	private AudioSource otherAudioSource;
+	public AudioSource footstepsSound;
 
 	private void Awake()
 	{
@@ -54,8 +55,15 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
-    }
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+		{
+			footstepsSound.enabled = true;
+		}
+		else
+		{
+			footstepsSound.enabled = false;
+		}
+	}
 
 	public static void PlaySound(SoundType type, float volume = 1)
 	{
