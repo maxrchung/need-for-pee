@@ -13589,6 +13589,12 @@ MonoBehaviour:
   - name: CVS
     sounds:
     - {fileID: 8300000, guid: b04b34901ef1a46428cacc416782318b, type: 3}
+  - name: DOOR_OPEN
+    sounds:
+    - {fileID: 8300000, guid: 56c8399529e609745b4e99f81e160625, type: 3}
+  - name: DOOR_CLOSE
+    sounds:
+    - {fileID: 8300000, guid: a9d428945aa2ee44fbbfe6a8eeb73f94, type: 3}
 --- !u!82 &1796836463
 AudioSource:
   m_ObjectHideFlags: 0

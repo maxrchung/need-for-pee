@@ -11,10 +11,10 @@ public enum SoundType
 	JINGLE,
 	HATSUNE_MIKU,
 	CVS,
+	DOOR_OPEN,
+	DOOR_CLOSE,
 	// VENDING_MACHINE,
 	// FOOTSTEP,
-	// BGM,
-	// DOOR_OPEN,
 	// BUTTON_CLICK,
 }
 
