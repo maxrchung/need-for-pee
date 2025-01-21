@@ -37,6 +37,7 @@ public enum GameFlag
     CatSoldShares,
     BusinessDenied,
     PissGuyLeft,
+    PeeShy,
 }
 
 public static class FlagManager
