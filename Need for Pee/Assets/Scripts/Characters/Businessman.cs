@@ -17,7 +17,7 @@ namespace Characters
             {
                 choice = await Manager.DisplayChoice(Strings.Greeting, "ok", "what code");
                 if (choice == 0) return;
-                await Manager.DisplayChoice("sorry busy with business");
+                await Manager.DisplayChoice("sorry busy with business", "okay");
                 return;
             }
 

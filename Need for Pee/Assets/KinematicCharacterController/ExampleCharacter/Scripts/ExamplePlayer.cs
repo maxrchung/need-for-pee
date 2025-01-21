@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using KinematicCharacterController;
-using KinematicCharacterController.Examples;
+﻿using UnityEngine;
 
 namespace KinematicCharacterController.Examples
 {
@@ -20,6 +16,7 @@ namespace KinematicCharacterController.Examples
         private int _textArrayIndex = -1;
         private bool _disabled = false;
         private IInteractable _interactable = null;
+        private GameObject glowLight;
 
         private void Start()
         {
@@ -31,6 +28,8 @@ namespace KinematicCharacterController.Examples
             // Ignore the character's collider(s) for camera obstruction checks
             CharacterCamera.IgnoredColliders.Clear();
             CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
+
+            glowLight = GameObject.Find("GlowLight");
         }
 
         public void Disable()
@@ -58,6 +57,11 @@ namespace KinematicCharacterController.Examples
                     {
                         _textArrayIndex =
                             TextManager.PissTextGeneration("Press P to interact", new Vector2(Screen.width * 0.15f, Screen.height * 0.4f), 0.2f, false);
+                        glowLight.transform.position = new Vector3(
+                            hit.collider.gameObject.transform.position.x,
+                            glowLight.transform.position.y,
+                            hit.collider.gameObject.transform.position.z
+                        );
                     }
 
                     hasHit = true;
@@ -69,9 +73,11 @@ namespace KinematicCharacterController.Examples
                 TextManager.ClearText(_textArrayIndex);
                 _textArrayIndex = -1;
                 _interactable = null;
+                glowLight.transform.position = new Vector3(0, glowLight.transform.position.y, -30);
             }
 
-            if (_disabled) return;
+            if (_disabled)
+                return;
             HandleCharacterInput();
         }
 
