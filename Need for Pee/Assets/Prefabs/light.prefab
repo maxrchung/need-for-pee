@@ -264,15 +264,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5499554889900253811, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.801
+      value: -13.512467
       objectReference: {fileID: 0}
     - target: {fileID: -5499554889900253811, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.054
+      value: 7.0498366
       objectReference: {fileID: 0}
     - target: {fileID: -5499554889900253811, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.641
+      value: -12.182429
       objectReference: {fileID: 0}
     - target: {fileID: -5499554889900253811, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
       propertyPath: m_LocalRotation.w
@@ -315,10 +315,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5499554889900253811, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8385102526350430645}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7449782648777001352, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6629105840873757327}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
 --- !u!4 &1067621005405032683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5499554889900253811, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
   m_PrefabInstance: {fileID: 4430790323615173990}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6494091207389136110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7449782648777001352, guid: d31aa45f239a9f04fa1e995caec39d40, type: 3}
+  m_PrefabInstance: {fileID: 4430790323615173990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6629105840873757327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494091207389136110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd94620dc5737f4c831ed15dc436c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayMinTimeInSex: 2
+  DelayMaxTimeInSex: 30
+  FlickerTimeInSex: 0.1
