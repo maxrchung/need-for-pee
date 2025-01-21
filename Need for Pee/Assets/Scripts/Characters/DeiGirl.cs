@@ -89,6 +89,14 @@ namespace Characters
 
         protected override async Task DialogTree()
         {
+            if (FlagManager.Check(GameFlag.PissGuyNumberFound))
+            {
+                var choice = await Manager.DisplayChoice(Strings.Greeting, "bye", "give phone");
+                if (choice == 0) return;
+                await Manager.DisplayText("no");
+                return;
+            }
+
             if (FlagManager.Check(GameFlag.CanPickUpKey) && !FlagManager.Check(GameFlag.HadKeyGirl))
             {
                 await KeyTree();
