@@ -22,6 +22,7 @@ public class PissBarScript : MonoBehaviour
     float switchTime = 0f;
     float initialWidth,initialHeight,scaledWidth,scaledHeight;
     bool gg = false;
+    bool pissing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,7 +43,18 @@ public class PissBarScript : MonoBehaviour
         {
             if(currentPiss < maxPiss)
             {
-                currentPiss += Time.deltaTime;
+                if(pissing)
+                {
+                    currentPiss -= 10 * Time.deltaTime;
+                    if(currentPiss <= 0)
+                    {
+                        pissing = false;
+                    }
+                }
+                else
+                {
+                    currentPiss += Time.deltaTime;
+                }
             }
             switchTime += Time.deltaTime;
             currentSwitchTime = (1-(currentPiss/maxPiss)) * (maxSwitchTime-minSwitchTime) + minSwitchTime;
@@ -66,9 +78,15 @@ public class PissBarScript : MonoBehaviour
         }
     }
 
-    public void EjectPiss(float amount)
+    public float BeginEjectingPiss()
     {
-        currentPiss -= amount;
+        pissing = true;
+        return currentPiss;
+    }
+
+    public void FinishPissing()
+    {
+
     }
 
     public float GetPiss()

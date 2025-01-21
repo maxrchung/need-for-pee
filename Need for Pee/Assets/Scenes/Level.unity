@@ -12258,15 +12258,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5841155
+      value: -22.42
       objectReference: {fileID: 0}
     - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.546
       objectReference: {fileID: 0}
     - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3040562
+      value: 40.968
       objectReference: {fileID: 0}
     - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12299,6 +12299,63 @@ PrefabInstance:
     - target: {fileID: 8556859793562262951, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
       propertyPath: m_Name
       value: Pissbottle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+--- !u!1001 &1631652574
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.892344
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613614957104935516, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556859793562262951, guid: fc5a60aa93512ade7bcb1ac850f04046, type: 3}
+      propertyPath: m_Name
+      value: Pissbottle (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16089,6 +16146,7 @@ SceneRoots:
   - {fileID: 1343186363}
   - {fileID: 674223992}
   - {fileID: 1606936318}
+  - {fileID: 1631652574}
   - {fileID: 1418893934}
   - {fileID: 380130964}
   - {fileID: 239549274}

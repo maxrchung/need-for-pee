@@ -46,6 +46,7 @@ public class BaseCharacter : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (!CanInteract()) return;
         TreeWrapper();
     }
 

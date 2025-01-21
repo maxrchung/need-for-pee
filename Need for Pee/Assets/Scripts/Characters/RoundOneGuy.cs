@@ -12,7 +12,7 @@ namespace Characters
         }
 
 
-        protected override bool ShouldBeInteractable() => !FlagManager.Check(GameFlag.KnowsCodeGiver);
+        protected override bool ShouldBeInteractable() => true;
 
         private async Task PreFoundDialogue()
         {
@@ -56,8 +56,47 @@ namespace Characters
             FlagManager.Set(GameFlag.KnowsCodeGiver);
         }
 
+        private async Task KeyDialogue()
+        {
+            var choice = -1;
+            if (FlagManager.Check(GameFlag.DiscoveredKeyWrong) && FlagManager.Check(GameFlag.HasKeyRound1Guy))
+            {
+                await Manager.DisplayChoice(Strings.Greeting, "key wrong");
+                await Manager.DisplayText("not my problem");
+                await Manager.DisplayChoice("ill take it back tho", "ok");
+                SoundManager.PlaySound(SoundType.ITEM);
+                FlagManager.Unset(GameFlag.HasKey);
+                FlagManager.Unset(GameFlag.HasKeyRound1Guy);
+                FlagManager.Set(GameFlag.HadKeyRound1Guy);
+                FlagManager.Unset(GameFlag.DiscoveredKeyWrong);
+                return;
+            }
+
+            choice = await Manager.DisplayChoice(Strings.Greeting, "do you have key", "nevermind");
+            if (choice == 1) return;
+            if (FlagManager.Check(GameFlag.HasKey))
+            {
+                await Manager.DisplayText("you have key already" +
+                                          (FlagManager.Check(GameFlag.DiscoveredKeyWrong) ? " go return it" : ""));
+                return;
+            }
+
+            await Manager.DisplayChoice("you need round1 club card", "i have", "what the frick");
+            await Manager.DisplayText("just kidding...");
+            SoundManager.PlaySound(SoundType.ITEM);
+            await Manager.DisplayChoice("here u go", "thank u", "frick u");
+            FlagManager.Set(GameFlag.HasKey);
+            FlagManager.Set(GameFlag.HasKeyRound1Guy);
+        }
+
         protected override async Task DialogTree()
         {
+            if (FlagManager.Check(GameFlag.CanPickUpKey) && !FlagManager.Check(GameFlag.HadKeyRound1Guy))
+            {
+                await KeyDialogue();
+                return;
+            }
+
             if (FlagManager.Check(GameFlag.NeedCode))
             {
                 if (FlagManager.CheckAll(GameFlag.NeedClubCard, GameFlag.HasClubCard))
