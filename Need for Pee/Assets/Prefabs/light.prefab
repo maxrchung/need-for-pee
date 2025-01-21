@@ -343,5 +343,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DelayMinTimeInSex: 2
-  DelayMaxTimeInSex: 30
+  DelayMaxTimeInSex: 10
   FlickerTimeInSex: 0.1
