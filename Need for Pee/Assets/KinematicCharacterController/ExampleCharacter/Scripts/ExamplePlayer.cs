@@ -36,12 +36,21 @@ namespace KinematicCharacterController.Examples
         {
             Cursor.lockState = CursorLockMode.None;
             _disabled = true;
+             PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
+            characterInputs.MoveAxisForward = 0f;
+            characterInputs.MoveAxisRight = 0f;
+            Character.SetInputs(ref characterInputs);
         }
 
         public void Enable()
         {
             Cursor.lockState = CursorLockMode.Locked;
             _disabled = false;
+        }
+
+        public bool GetDisabled()
+        {
+            return _disabled;
         }
 
         private void Update()

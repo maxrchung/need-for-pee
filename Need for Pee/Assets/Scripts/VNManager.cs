@@ -24,6 +24,7 @@ public class VNManager : MonoBehaviour
     private readonly List<int> _textsToClear = new List<int>();
     Vector2 _dialoguePosition;
     private int _mainText = -1;
+    public bool gg = false;
 
     readonly Vector2[] _choicePositions = new Vector2[3];
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -136,11 +137,14 @@ public class VNManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
         }
-        DisplayButtons(choices.Length);
-        var idx = 0;
-        foreach (var choice in choices)
+        if(!gg)
         {
-            AddString(choice, _choicePositions[idx++], choiceScale, false);
+            DisplayButtons(choices.Length);
+            var idx = 0;
+            foreach (var choice in choices)
+            {
+                AddString(choice, _choicePositions[idx++], choiceScale, false);
+            }
         }
     }
 
@@ -170,5 +174,31 @@ public class VNManager : MonoBehaviour
         _textsToClear.Clear();
         _mainText = -1;
         dialoguePanel.SetActive(false);
+    }
+
+    public Task<int> DisplayLastChoice(string text, params string[] choices)
+    {
+        dialoguePanel.SetActive(true);
+        AddSlowString(text, _dialoguePosition, dialogueScale, true,0.2f,false);
+        _isInChoice = true;
+        StartCoroutine(WaitForLastText(choices));
+        
+        
+        _choiceTask = new TaskCompletionSource<int>();
+        return _choiceTask.Task;
+    }
+
+    IEnumerator WaitForLastText(params string[] choices)
+    {
+        while(textManager.textArray[_textsToClear[_mainText]].completed == false)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        DisplayButtons(choices.Length);
+        var idx = 0;
+        foreach (var choice in choices)
+        {
+            AddString(choice, _choicePositions[idx++], choiceScale, false);
+        }
     }
 }

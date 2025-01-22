@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using KinematicCharacterController.Examples;
 
 public enum SoundType
 {
@@ -28,6 +29,7 @@ public class SoundManager : MonoBehaviour
 	private AudioSource bgmAudioSource;
 	private AudioSource otherAudioSource;
 	public AudioSource footstepsSound;
+	public ExamplePlayer player;
 
 	private void Awake()
 	{
@@ -38,6 +40,7 @@ public class SoundManager : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	private void Start()
     {
+		player = FindAnyObjectByType<ExamplePlayer>();
 		bgmAudioSource = GetComponents<AudioSource>()[0];
 		otherAudioSource = GetComponents<AudioSource>()[1];
 #if UNITY_EDITOR
@@ -55,7 +58,7 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+		if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && !player.GetDisabled())
 		{
 			footstepsSound.enabled = true;
 		}

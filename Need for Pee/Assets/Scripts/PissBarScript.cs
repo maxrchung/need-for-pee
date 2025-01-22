@@ -108,8 +108,9 @@ public class PissBarScript : MonoBehaviour
         vn.ClearButtons();
         vn.ClearText();
         player.Disable();
+        vn.gg = true;
         var choices0 = new List<string>() {"pee again...","pee again...","pee again..."};
-        var choice0 = await vn.DisplaySlowChoice("you peed...",choices0.ToArray());
+        var choice0 = await vn.DisplayLastChoice("you peed...",choices0.ToArray());
         FlagManager.ClearAll();
         SceneManager.LoadScene("Level");
     }

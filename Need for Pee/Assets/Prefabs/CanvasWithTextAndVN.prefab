@@ -771,6 +771,7 @@ MonoBehaviour:
   - {fileID: 3586324635368343268}
   - {fileID: 3873502575112342323}
   isPlaying: 0
+  gg: 0
 --- !u!114 &7275186244766302726
 MonoBehaviour:
   m_ObjectHideFlags: 0
