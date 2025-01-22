@@ -1,6 +1,8 @@
 # Need for Pee
 I have a need for pee.
 
+This is a 3D visual novel horror adventure game about needing to pee in a convenience store.
+
 ## Play
 
 Play on the web (keyboard and mouse required): https://maxrchung.itch.io/need-for-pee
