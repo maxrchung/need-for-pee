@@ -1,7 +1,9 @@
 # Need for Pee
 I have a need for pee.
 
-Play on web (needs keyboard and mouse): https://maxrchung.itch.io/need-for-pee
+## Play
+
+Play on the web (keyboard and mouse required): https://maxrchung.itch.io/need-for-pee
 
 ## Screenshots
 
